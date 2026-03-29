@@ -4,6 +4,16 @@ My personal portfolio and engineering blog — **[ktncodes.com](https://ktncodes
 
 The homepage is an AI chatbot powered by Google Gemini. Ask it anything about my work: projects, experience, skills, or blog posts. The rest of the site is a full blog with posts, tags, archives, and search.
 
+
+## What You'll Find
+
+- **Engineering notes**: C++/Qt, embedded Linux, real-time systems, and the hard bugs that come with them
+- **Agentic engineering**: building with AI agents, GitHub Copilot workflows, and AI-assisted development in production
+- **Debugging & systems**: SIGSEGV/SIGABRT crash analysis, concurrency defects, log-driven root-cause methodology
+- **Tooling & process**: coding standards, onboarding docs, team-wide AI adoption, and repeatable workflows
+- **Learning logs**: things I'm studying, synthesizing, and want to remember
+- **Build-in-public**: honest reflections on what shipped, what broke, and what I'd do differently
+
 ---
 
 ## Stack
