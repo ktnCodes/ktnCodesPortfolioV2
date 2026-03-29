@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
@@ -18,13 +18,21 @@ const navLinks = [
 
 export function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  function handleLogoClick(e: React.MouseEvent) {
+    if (pathname === "/") {
+      e.preventDefault();
+      router.refresh();
+    }
+  }
 
   return (
     <nav className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
         <div className="flex h-14 items-center justify-between">
-          <Link href="/" className="text-lg font-bold text-accent hover:text-accent-hover transition-colors">
+          <Link href="/" onClick={handleLogoClick} className="text-lg font-bold text-accent hover:text-accent-hover transition-colors">
             ktnCodes
           </Link>
 

@@ -1,4 +1,4 @@
-import { Rss } from "lucide-react";
+import { Mail } from "lucide-react";
 
 function GitHubIcon({ size = 18 }: { size?: number }) {
   return (
@@ -43,11 +43,11 @@ export function Footer() {
             <LinkedInIcon />
           </a>
           <a
-            href="/rss.xml"
+            href="mailto:kevtrinhnguyen@gmail.com"
             className="text-muted hover:text-accent transition-colors"
-            aria-label="RSS Feed"
+            aria-label="Send email"
           >
-            <Rss size={18} />
+            <Mail size={18} />
           </a>
         </div>
       </div>
