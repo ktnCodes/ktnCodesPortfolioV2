@@ -1,0 +1,188 @@
+{
+  "personal": {
+    "name": "Kevin Trinh Nguyen",
+    "title": "Software Engineer — Embedded Systems & AI/Agentic Engineering",
+    "email": "kevintnguyen63@gmail.com",
+    "location": "Austin, TX",
+    "bio": "Software Engineer with 4+ years at John Deere spanning embedded QA/QI and feature development on precision agriculture displays, now pivoting toward AI-assisted development and agentic engineering. I build AI-integrated knowledge systems, developer tooling, and write about the intersection of embedded systems and modern AI workflows.",
+    "avatar": "/avatar.png"
+  },
+  "education": {
+    "degree": "B.S. Computer Engineering",
+    "institution": "Iowa State University",
+    "graduationDate": "December 2022",
+    "highlights": [
+      "Vietnamese Student Association — Student Advisor",
+      "Multicultural Vision Program Scholar",
+      "FIRST Robotics Alumni"
+    ]
+  },
+  "experience": [
+    {
+      "company": "John Deere",
+      "position": "Software Developer — AutoPath Team",
+      "location": "Austin, TX",
+      "duration": "June 2024 – Present",
+      "description": "Feature development on Gen4OS precision agriculture displays. Delivered AB-Curves for AutoPath Boundaries (hackathon spike to 8 production stories), led 6+ story AutoPathTrackService refactoring, and discovered 5 critical threading issues in AutomationEnginePlanner. Built a 316-file AI-integrated engineering knowledge system and drove team-wide GitHub Copilot adoption from 0% to daily use.",
+      "technologies": ["C++14", "Qt5", "Embedded Linux", "Google Test", "CMake", "Python", "MkDocs"]
+    },
+    {
+      "company": "John Deere",
+      "position": "QA/QI Software Engineer — Guidance QI Team",
+      "location": "Austin, TX",
+      "duration": "February 2023 – June 2024",
+      "description": "Deep-debug specialist resolving 38 major and 60+ minor defects across Gen4OS displays. Diagnosed SIGSEGV/SIGABRT crashes, threading and concurrency defects using GDB, valgrind, and ASAN. Executed SiL and on-vehicle testing with tractors and combines.",
+      "technologies": ["C++", "Qt", "GDB", "Valgrind", "ASAN", "Google Test", "Froglogic Squish"]
+    },
+    {
+      "company": "John Deere",
+      "position": "Part-Time Software Engineer — Guidance QI Team",
+      "location": "Ames, IA",
+      "duration": "July 2021 – December 2022",
+      "description": "Conducted embedded software testing while enrolled full-time at Iowa State. Resolved 24 confirmed defects using Google Test and Froglogic Squish. Refactored AutoTrac PieState logic into an independent component.",
+      "technologies": ["C++", "CMake", "Qt", "CAN Protocol", "Ubuntu Linux"]
+    },
+    {
+      "company": "ISU Endpoint Technologies",
+      "position": "IT Technical Assistant",
+      "location": "Ames, IA",
+      "duration": "February 2020 – July 2021",
+      "description": "Resolved 200+ technical support tickets. Primary Apple technician deploying Jamf Pro and custom Python scripts across campus.",
+      "technologies": ["Python", "Jamf Pro", "macOS"]
+    }
+  ],
+  "skills": {
+    "languages": ["C++14", "C", "Python", "JavaScript", "TypeScript", "Java", "SQL"],
+    "ai_agentic": ["Agent Instruction Authoring", "MCP Integration", "Prompt Engineering", "LLM-Assisted Workflows", "Claude Code", "GitHub Copilot", "ICM Methodology"],
+    "embedded_systems": ["Gen4OS", "Embedded Linux", "CAN Protocol", "Qt5", "CMake", "JDX Build System"],
+    "web_cloud": ["React", "Next.js", "Tailwind CSS", "Node.js", "AWS", "Hugo"],
+    "debugging_testing": ["GDB", "Valgrind", "ASAN", "Google Test/Mock", "Froglogic Squish", "SiL/HiL Testing"],
+    "devops_tools": ["Git", "GitHub Actions", "Jenkins", "Docker", "MkDocs", "Ubuntu Linux"]
+  },
+  "projects": [
+    {
+      "title": "AI Portfolio Site",
+      "category": "Web / AI",
+      "description": "This site. A chatbot-first portfolio built with Next.js, React, and Google Gemini. The AI chatbot answers questions about my work and surfaces relevant blog posts.",
+      "techStack": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Gemini AI", "Vercel"],
+      "date": "2026",
+      "status": "Active",
+      "featured": true,
+      "links": {
+        "github": "https://github.com/ktnCodes/ktncodes-v2",
+        "live": "https://ktncodes.vercel.app"
+      }
+    },
+    {
+      "title": "JobReforgerAI",
+      "category": "AI / Python",
+      "description": "AI resume toolkit (13,000+ lines Python) that tailors resumes to job descriptions with dual scoring: an 8-component ATS engine and a 6-factor HR recruiter simulation. Multi-agent orchestration with Claude Code slash commands and FastMCP.",
+      "techStack": ["Python", "SBERT", "FastMCP", "Claude Code", "BM25", "NetworkX"],
+      "date": "2026",
+      "status": "Active",
+      "featured": true,
+      "links": {
+        "github": "https://github.com/ktnCodes/JobReforgerAI"
+      }
+    },
+    {
+      "title": "ICM Template",
+      "category": "AI / Framework",
+      "description": "Open-sourced model-agnostic template framework (930 lines Python) implementing the Interpretable Context Methodology for organizing AI-assisted workflows through folder structure and explicit stage contracts.",
+      "techStack": ["Python", "Claude Code", "Cursor", "GitHub Copilot"],
+      "date": "2026",
+      "status": "Active",
+      "featured": true,
+      "links": {
+        "github": "https://github.com/ktnCodes/icm-template"
+      }
+    },
+    {
+      "title": "YouTube Research Report Tool",
+      "category": "AI / Python",
+      "description": "FastMCP server tool that extracts YouTube transcripts and auto-generates structured Markdown research reports with timestamped topic outlines.",
+      "techStack": ["Python", "FastMCP", "Claude Code"],
+      "date": "2026",
+      "status": "Active",
+      "links": {}
+    },
+    {
+      "title": "TFT Opener Analysis",
+      "category": "Data / Gaming",
+      "description": "Tool for analyzing Teamfight Tactics opening strategies and compositions using game data.",
+      "techStack": ["Python"],
+      "date": "2026",
+      "status": "Planned",
+      "links": {}
+    },
+    {
+      "title": "Boomba Recon Bot",
+      "category": "Embedded / Robotics",
+      "description": "Senior design project: programmed a Roomba as a reconnaissance bot using C and embedded systems. Integrated sensors for autonomous navigation and obstacle detection.",
+      "techStack": ["C", "Embedded Systems", "Sensors"],
+      "date": "2022",
+      "status": "Completed",
+      "links": {}
+    },
+    {
+      "title": "Card Game App",
+      "category": "Mobile / Java",
+      "description": "Android universal card game with online multiplayer functionality. Built with Java and Android SDK.",
+      "techStack": ["Java", "Android SDK", "Multiplayer"],
+      "date": "2022",
+      "status": "Completed",
+      "links": {}
+    },
+    {
+      "title": "Cloud Photo Gallery",
+      "category": "Web / Cloud",
+      "description": "Cloud-based photo gallery hosted on AWS. Built with Flask, RDS for database, and EC2 for deployment.",
+      "techStack": ["Python", "Flask", "AWS RDS", "AWS EC2"],
+      "date": "2022",
+      "status": "Completed",
+      "links": {}
+    },
+    {
+      "title": "Hinkley Medical Web App",
+      "category": "Web / Healthcare",
+      "description": "Internal web application for a medical device startup. Led front-end development for inventory and shipment tracking, replacing manual Excel workflows.",
+      "techStack": ["React", "JavaScript", "CSS", "AWS Amplify", "AWS DataStore"],
+      "date": "2022",
+      "status": "Completed",
+      "links": {}
+    }
+  ],
+  "social": {
+    "github": "https://github.com/ktnCodes",
+    "linkedin": "https://www.linkedin.com/in/itskevtrinh/"
+  },
+  "personality": {
+    "traits": ["Systematic", "Curious", "Builder-mindset", "Direct communicator"],
+    "interests": ["AI/Agentic Engineering", "Embedded Systems", "Developer Tooling", "Open Source", "Gaming (TFT)"],
+    "workingStyle": "Evidence-based and methodical. Prefers deep investigation over quick patches. Documents everything."
+  },
+  "chatbot": {
+    "name": "Kevin",
+    "personality": "Professional and friendly, like talking in a job interview. Enthusiastic about AI and embedded systems work. Direct, clear, no filler.",
+    "tone": "First person, conversational but professional",
+    "topics": ["work experience", "projects", "skills", "education", "blog posts", "AI/agentic engineering", "embedded systems"]
+  },
+  "presetQuestions": [
+    {
+      "label": "Tell me about yourself",
+      "tool": "getPresentation"
+    },
+    {
+      "label": "What have you built?",
+      "tool": "getProjects"
+    },
+    {
+      "label": "What's your tech stack?",
+      "tool": "getSkills"
+    },
+    {
+      "label": "What do you write about?",
+      "tool": "getBlogPosts"
+    }
+  ]
+}
