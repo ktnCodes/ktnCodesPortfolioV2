@@ -63,12 +63,17 @@ export function Chat() {
 
             {error && (
               <div className="flex justify-start">
-                <div className="rounded-2xl rounded-bl-sm bg-red-500/10 border border-red-500/30 px-4 py-2.5">
-                  <p className="text-sm text-red-400">
-                    {error.message.includes("429")
-                      ? "API quota exceeded. Try again in a moment."
-                      : "Something went wrong. Please try again."}
-                  </p>
+                <div className="rounded-2xl rounded-bl-sm bg-surface border border-border px-4 py-3 space-y-1.5">
+                  {error.message === "rate_limit" ? (
+                    <>
+                      <p className="text-sm font-medium">Rate limit reached</p>
+                      <p className="text-xs text-muted">
+                        The free tier allows 15 requests/min. Wait about a minute and try again — or use one of the preset buttons which don&apos;t count toward the limit until they call the AI.
+                      </p>
+                    </>
+                  ) : (
+                    <p className="text-sm text-muted">Something went wrong. Please try again.</p>
+                  )}
                 </div>
               </div>
             )}

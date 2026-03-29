@@ -1,5 +1,6 @@
 import { google } from "@ai-sdk/google";
-import { streamText, stepCountIs } from "ai";
+import { streamText, stepCountIs, convertToModelMessages } from "ai";
+import type { UIMessage } from "ai";
 import { z } from "zod";
 import { generateSystemPrompt } from "./prompt";
 import { getConfig } from "@/lib/config";
@@ -7,14 +8,14 @@ import { getAllPostMeta } from "@/lib/posts";
 
 export async function POST(req: Request) {
   try {
-    const { messages } = await req.json();
+    const { messages }: { messages: UIMessage[] } = await req.json();
     const config = getConfig();
     const allPosts = getAllPostMeta();
 
     const result = streamText({
-      model: google("gemini-1.5-flash"),
+      model: google("gemini-2.5-flash-lite"),
       system: generateSystemPrompt(),
-      messages,
+      messages: await convertToModelMessages(messages),
       stopWhen: stepCountIs(2),
       tools: {
         getPresentation: {
@@ -92,7 +93,15 @@ export async function POST(req: Request) {
       },
     });
 
-    return result.toUIMessageStreamResponse();
+    return result.toUIMessageStreamResponse({
+      onError: (error) => {
+        const msg = error instanceof Error ? error.message : String(error);
+        if (msg.includes("quota") || msg.includes("429") || msg.includes("RESOURCE_EXHAUSTED")) {
+          return "rate_limit";
+        }
+        return "error";
+      },
+    });
   } catch (error) {
     const message =
       error instanceof Error ? error.message : "An error occurred";
