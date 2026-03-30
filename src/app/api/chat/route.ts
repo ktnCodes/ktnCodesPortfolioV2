@@ -1,10 +1,27 @@
 import { google } from "@ai-sdk/google";
+import { openai } from "@ai-sdk/openai";
 import { streamText, stepCountIs, convertToModelMessages } from "ai";
 import type { UIMessage } from "ai";
 import { z } from "zod";
 import { generateSystemPrompt } from "./prompt";
 import { getConfig } from "@/lib/config";
 import { getAllPostMeta } from "@/lib/posts";
+
+// Persists for the lifetime of the server instance.
+// Once Google hits its quota, all subsequent requests in this session use OpenAI.
+let googleExhausted = false;
+
+function isQuotaError(error: unknown): boolean {
+  const msg = error instanceof Error ? error.message : String(error);
+  return msg.includes("quota") || msg.includes("429") || msg.includes("RESOURCE_EXHAUSTED");
+}
+
+function getModel() {
+  if (!googleExhausted && process.env.GOOGLE_GENERATIVE_AI_API_KEY) {
+    return google("gemini-2.5-flash-lite");
+  }
+  return openai("gpt-4.1-nano");
+}
 
 export async function POST(req: Request) {
   try {
@@ -13,7 +30,7 @@ export async function POST(req: Request) {
     const allPosts = getAllPostMeta();
 
     const result = streamText({
-      model: google("gemini-2.5-flash-lite"),
+      model: getModel(),
       system: generateSystemPrompt(),
       messages: await convertToModelMessages(messages),
       stopWhen: stepCountIs(2),
@@ -95,25 +112,24 @@ export async function POST(req: Request) {
 
     return result.toUIMessageStreamResponse({
       onError: (error) => {
-        const msg = error instanceof Error ? error.message : String(error);
-        if (msg.includes("quota") || msg.includes("429") || msg.includes("RESOURCE_EXHAUSTED")) {
+        if (isQuotaError(error)) {
+          googleExhausted = true;
           return "rate_limit";
         }
         return "error";
       },
     });
   } catch (error) {
-    const message =
-      error instanceof Error ? error.message : "An error occurred";
-    if (message.includes("quota") || message.includes("429")) {
+    if (isQuotaError(error)) {
+      googleExhausted = true;
       return new Response(
         JSON.stringify({
-          error:
-            "API quota exceeded. Try again in a moment or use the preset questions.",
+          error: "API quota exceeded. Try again in a moment or use the preset questions.",
         }),
         { status: 429 }
       );
     }
+    const message = error instanceof Error ? error.message : "An error occurred";
     return new Response(JSON.stringify({ error: message }), { status: 500 });
   }
 }
