@@ -5,7 +5,7 @@ import type { UIMessage } from "ai";
 import { z } from "zod";
 import { generateSystemPrompt } from "./prompt";
 import { getConfig } from "@/lib/config";
-import { getAllPostMeta } from "@/lib/posts";
+import { getAllPostMeta, getPostBySlug } from "@/lib/posts";
 
 // Persists for the lifetime of the server instance.
 // Once Google hits its quota, all subsequent requests in this session use OpenAI.
@@ -33,7 +33,7 @@ export async function POST(req: Request) {
       model: getModel(),
       system: generateSystemPrompt(),
       messages: await convertToModelMessages(messages),
-      stopWhen: stepCountIs(2),
+      stopWhen: stepCountIs(3),
       tools: {
         getPresentation: {
           description:
@@ -105,6 +105,30 @@ export async function POST(req: Request) {
               posts: matches.length > 0 ? matches : allPosts.slice(0, 3),
               query: topic,
             };
+          },
+        },
+        getPostContent: {
+          description:
+            "Read the full content of one or more blog posts by slug. Use when someone asks about what Kevin wrote in a specific post, wants details from an article, or when you need to accurately answer a question using post content. Call getBlogPosts first to discover slugs, then call this to read the actual post bodies.",
+          inputSchema: z.object({
+            slugs: z
+              .array(z.string())
+              .describe("One or more post slugs to fetch full content for."),
+          }),
+          execute: async ({ slugs }) => {
+            const results = slugs.map((slug) => {
+              const post = getPostBySlug(slug);
+              if (!post) return { slug, error: "Post not found" };
+              return {
+                slug: post.slug,
+                title: post.title,
+                date: post.date,
+                tags: post.tags,
+                summary: post.summary,
+                content: post.content,
+              };
+            });
+            return { posts: results };
           },
         },
       },

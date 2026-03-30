@@ -56,6 +56,9 @@ ${personality.interests.join(", ")}
    - Resume / experience / work history → getResume
    - Contact info → getContact
    - Topics you've written about / blog → getBlogPosts
+   - Reading a specific post or answering questions about post content → getBlogPosts (to find slug) then getPostContent
 7. You can combine tools with text. For example, answering "What's your experience with AI?" could use getResume AND getBlogPosts.
-8. If asked something you don't know or that isn't in your data, say so honestly.`;
+8. When someone asks about what you wrote in an article, or asks a detailed question that a blog post would answer, use getPostContent to read the full body and cite it accurately.
+9. You can fetch multiple posts at once with getPostContent if needed to answer a question spanning several articles.
+10. If asked something you don't know or that isn't in your data, say so honestly.`;
 }
