@@ -9,7 +9,14 @@ import { getAllPostMeta, getPostBySlug } from "@/lib/posts";
 
 // Persists for the lifetime of the server instance.
 // Once Google hits its quota, all subsequent requests in this session use OpenAI.
+// On Vercel (stateless), set DISABLE_GOOGLE=true in env vars to skip Google entirely.
 let googleExhausted = false;
+
+function useGoogle(): boolean {
+  if (process.env.DISABLE_GOOGLE === "true") return false;
+  if (googleExhausted) return false;
+  return !!process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+}
 
 function isQuotaError(error: unknown): boolean {
   const msg = error instanceof Error ? error.message : String(error);
@@ -128,7 +135,7 @@ export async function POST(req: Request) {
 
     // Try Google first; if it throws synchronously (quota at connection level),
     // fall through and retry with OpenAI on the same request.
-    if (!googleExhausted && process.env.GOOGLE_GENERATIVE_AI_API_KEY) {
+    if (useGoogle()) {
       try {
         const result = streamText({
           model: google("gemini-2.5-flash-lite"),
@@ -138,6 +145,9 @@ export async function POST(req: Request) {
           onError: (error) => {
             if (isQuotaError(error)) {
               googleExhausted = true;
+              console.error("[chat] Google quota exhausted (mid-stream). Set DISABLE_GOOGLE=true in Vercel env vars.");
+            } else {
+              console.error("[chat] Google stream error:", error);
             }
             return "error";
           },
@@ -145,20 +155,26 @@ export async function POST(req: Request) {
       } catch (error) {
         if (isQuotaError(error)) {
           googleExhausted = true;
+          console.error("[chat] Google quota exhausted (sync). Falling back to OpenAI.");
           // Fall through to OpenAI below
         } else {
+          console.error("[chat] Google unexpected error:", error);
           throw error;
         }
       }
     }
 
     // OpenAI fallback
+    console.log("[chat] Using OpenAI gpt-4.1-nano");
     const result = streamText({
       model: openai("gpt-4.1-nano"),
       ...sharedParams,
     });
     return result.toUIMessageStreamResponse({
-      onError: () => "error",
+      onError: (error) => {
+        console.error("[chat] OpenAI stream error:", error);
+        return "error";
+      },
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : "An error occurred";
