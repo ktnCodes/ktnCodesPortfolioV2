@@ -7,10 +7,10 @@ import type { Post, PostMeta } from "@/types/posts";
 const postsDirectory = path.join(process.cwd(), "content", "posts");
 
 export function getAllPostMeta(): PostMeta[] {
-  const fileNames = fs.readdirSync(postsDirectory).filter((f) => f.endsWith(".mdx"));
+  const fileNames = fs.readdirSync(postsDirectory).filter((f) => f.endsWith(".mdx") || f.endsWith(".md"));
 
   const posts = fileNames.map((fileName) => {
-    const slug = fileName.replace(/\.mdx$/, "");
+    const slug = fileName.replace(/\.mdx?$/, "");
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
@@ -30,9 +30,11 @@ export function getAllPostMeta(): PostMeta[] {
 }
 
 export function getPostBySlug(slug: string): Post | null {
-  const fullPath = path.join(postsDirectory, `${slug}.mdx`);
+  const mdxPath = path.join(postsDirectory, `${slug}.mdx`);
+  const mdPath = path.join(postsDirectory, `${slug}.md`);
+  const fullPath = fs.existsSync(mdxPath) ? mdxPath : fs.existsSync(mdPath) ? mdPath : null;
 
-  if (!fs.existsSync(fullPath)) return null;
+  if (!fullPath) return null;
 
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
