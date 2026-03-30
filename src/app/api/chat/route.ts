@@ -16,21 +16,13 @@ function isQuotaError(error: unknown): boolean {
   return msg.includes("quota") || msg.includes("429") || msg.includes("RESOURCE_EXHAUSTED");
 }
 
-function getModel() {
-  if (!googleExhausted && process.env.GOOGLE_GENERATIVE_AI_API_KEY) {
-    return google("gemini-2.5-flash-lite");
-  }
-  return openai("gpt-4.1-nano");
-}
-
 export async function POST(req: Request) {
   try {
     const { messages }: { messages: UIMessage[] } = await req.json();
     const config = getConfig();
     const allPosts = getAllPostMeta();
 
-    const result = streamText({
-      model: getModel(),
+    const sharedParams = {
       system: generateSystemPrompt(),
       messages: await convertToModelMessages(messages),
       stopWhen: stepCountIs(3),
@@ -90,7 +82,7 @@ export async function POST(req: Request) {
                 "Optional topic to filter posts by. Matches against title, tags, and summary."
               ),
           }),
-          execute: async ({ topic }) => {
+          execute: async ({ topic }: { topic?: string }) => {
             if (!topic) {
               return { posts: allPosts.slice(0, 5), query: "recent" };
             }
@@ -115,8 +107,8 @@ export async function POST(req: Request) {
               .array(z.string())
               .describe("One or more post slugs to fetch full content for."),
           }),
-          execute: async ({ slugs }) => {
-            const results = slugs.map((slug) => {
+          execute: async ({ slugs }: { slugs: string[] }) => {
+            const results = slugs.map((slug: string) => {
               const post = getPostBySlug(slug);
               if (!post) return { slug, error: "Post not found" };
               return {
@@ -132,27 +124,43 @@ export async function POST(req: Request) {
           },
         },
       },
-    });
+    };
 
-    return result.toUIMessageStreamResponse({
-      onError: (error) => {
+    // Try Google first; if it throws synchronously (quota at connection level),
+    // fall through and retry with OpenAI on the same request.
+    if (!googleExhausted && process.env.GOOGLE_GENERATIVE_AI_API_KEY) {
+      try {
+        const result = streamText({
+          model: google("gemini-2.5-flash-lite"),
+          ...sharedParams,
+        });
+        return result.toUIMessageStreamResponse({
+          onError: (error) => {
+            if (isQuotaError(error)) {
+              googleExhausted = true;
+            }
+            return "error";
+          },
+        });
+      } catch (error) {
         if (isQuotaError(error)) {
           googleExhausted = true;
-          return "rate_limit";
+          // Fall through to OpenAI below
+        } else {
+          throw error;
         }
-        return "error";
-      },
+      }
+    }
+
+    // OpenAI fallback
+    const result = streamText({
+      model: openai("gpt-4.1-nano"),
+      ...sharedParams,
+    });
+    return result.toUIMessageStreamResponse({
+      onError: () => "error",
     });
   } catch (error) {
-    if (isQuotaError(error)) {
-      googleExhausted = true;
-      return new Response(
-        JSON.stringify({
-          error: "API quota exceeded. Try again in a moment or use the preset questions.",
-        }),
-        { status: 429 }
-      );
-    }
     const message = error instanceof Error ? error.message : "An error occurred";
     return new Response(JSON.stringify({ error: message }), { status: 500 });
   }
