@@ -2,9 +2,9 @@
   "personal": {
     "name": "Kevin Trinh Nguyen",
     "title": "Software Engineer — Embedded Systems & AI/Agentic Engineering",
-    "email": "kevtrinhnguyen@gmail.com",
+    "email": "",
     "location": "Austin, TX",
-    "bio": "Software Engineer with 4+ years at John Deere spanning embedded QA/QI and feature development on precision agriculture displays, now pivoting toward AI-assisted development and agentic engineering. I build AI-integrated knowledge systems, developer tooling, and write about the intersection of embedded systems and modern AI workflows.",
+    "bio": "Software Engineer with 4+ years at John Deere spanning embedded QA/QI and feature development on precision agriculture displays, now pivoting toward AI-assisted development and agentic engineering. Built a 316-file AI-integrated engineering knowledge system with custom agents, specialized skills, and Python tooling — then championed team-wide GitHub Copilot adoption from zero to daily use. Combines a systematic investigation methodology proven across 98+ production defects with end-to-end feature delivery (hackathon spike → 8 production stories shipped). Rare blend of deep systems debugging experience, AI developer tooling creation, and developer experience engineering.",
     "avatar": "/avatar.png"
   },
   "education": {
@@ -23,7 +23,7 @@
       "position": "Software Developer — AutoPath Team",
       "location": "Austin, TX",
       "duration": "June 2024 – Present",
-      "description": "Feature development on Gen4OS precision agriculture displays. Delivered AB-Curves for AutoPath Boundaries (hackathon spike to 8 production stories), led 6+ story AutoPathTrackService refactoring, and discovered 5 critical threading issues in AutomationEnginePlanner. Built a 316-file AI-integrated engineering knowledge system and drove team-wide GitHub Copilot adoption from 0% to daily use.",
+      "description": "Feature development on Gen4OS precision agriculture displays. Delivered AB-Curves for AutoPath Boundaries (hackathon spike → 8 production stories shipped in release 26.2). Led 6+ story AutoPathTrackService refactoring. Discovered 5 critical threading issues in AutomationEnginePlanner and designed the AEPathPlannerProxy architecture to resolve a confirmed use-after-free crash. Built a 316-file AI-integrated engineering knowledge system with custom agents and skills. Drove team-wide GitHub Copilot adoption from 0% to daily use. Delivered 90 story points in 2025 and 32 in Q1 2026 (6.0 pts/sprint, exceeding the 4–5 pt expectation).",
       "technologies": ["C++14", "Qt5", "Embedded Linux", "Google Test", "CMake", "Python", "MkDocs"]
     },
     {
@@ -31,7 +31,7 @@
       "position": "QA/QI Software Engineer — Guidance QI Team",
       "location": "Austin, TX",
       "duration": "February 2023 – June 2024",
-      "description": "Deep-debug specialist resolving 38 major and 60+ minor defects across Gen4OS displays. Diagnosed SIGSEGV/SIGABRT crashes, threading and concurrency defects using GDB, valgrind, and ASAN. Executed SiL and on-vehicle testing with tractors and combines.",
+      "description": "Deep-debug specialist resolving 38 major and 60+ minor defects across Gen4OS 4060 & 4600 displays. Diagnosed SIGSEGV/SIGABRT crashes and threading defects (race conditions, deadlocks, priority inversion) using GDB, valgrind, and ASAN. Executed SiL and on-vehicle testing with tractors and combines. Led daily stand-ups during manager absence and onboarded 3 engineers — earning direct recognition for accelerating new-hire ramp-up.",
       "technologies": ["C++", "Qt", "GDB", "Valgrind", "ASAN", "Google Test", "Froglogic Squish"]
     },
     {
@@ -39,8 +39,16 @@
       "position": "Part-Time Software Engineer — Guidance QI Team",
       "location": "Ames, IA",
       "duration": "July 2021 – December 2022",
-      "description": "Conducted embedded software testing while enrolled full-time at Iowa State. Resolved 24 confirmed defects using Google Test and Froglogic Squish. Refactored AutoTrac PieState logic into an independent component.",
+      "description": "Conducted embedded software testing while enrolled full-time at Iowa State. Resolved 24 confirmed defects using Google Test and Froglogic Squish. Refactored AutoTrac PieState logic into an independent component. Self-taught C++ and Qt through Udemy courses within 6 months of joining.",
       "technologies": ["C++", "CMake", "Qt", "CAN Protocol", "Ubuntu Linux"]
+    },
+    {
+      "company": "Hinckley Medical",
+      "position": "Front-End Developer (Contract)",
+      "location": "Ames, IA",
+      "duration": "January 2022 – December 2022",
+      "description": "Led front-end development for an internal inventory and shipment tracking web app for a medical device startup, replacing manual Excel workflows with a full-stack React application.",
+      "technologies": ["React", "JavaScript", "CSS", "AWS Amplify", "AWS DataStore", "AWS S3"]
     },
     {
       "company": "ISU Endpoint Technologies",
@@ -53,24 +61,24 @@
   ],
   "skills": {
     "languages": ["C++14", "C", "Python", "JavaScript", "TypeScript", "Java", "SQL"],
-    "ai_agentic": ["Agent Instruction Authoring", "MCP Integration", "Prompt Engineering", "LLM-Assisted Workflows", "Claude Code", "GitHub Copilot", "ICM Methodology"],
+    "ai_agentic": ["Agent Instruction Authoring", "MCP Integration", "Prompt Engineering", "LLM-Assisted Workflows", "Claude Code", "GitHub Copilot", "ICM Methodology", "Vercel AI SDK", "FastMCP", "SBERT", "Obsidian/PKM"],
     "embedded_systems": ["Gen4OS", "Embedded Linux", "CAN Protocol", "Qt5", "CMake", "JDX Build System"],
     "web_cloud": ["React", "Next.js", "Tailwind CSS", "Node.js", "AWS", "Hugo"],
-    "debugging_testing": ["GDB", "Valgrind", "ASAN", "Google Test/Mock", "Froglogic Squish", "SiL/HiL Testing"],
+    "debugging_testing": ["GDB", "Valgrind", "ASAN", "Google Test/Mock", "Froglogic Squish", "SiL/HiL Testing", "cppcheck", "clang-static-analyzer", "TDD"],
     "devops_tools": ["Git", "GitHub Actions", "Jenkins", "Docker", "MkDocs", "Ubuntu Linux"]
   },
   "projects": [
     {
-      "title": "AI Portfolio Site",
+      "title": "AI Portfolio Site (ktncodes.com)",
       "category": "Web / AI",
-      "description": "This site. A chatbot-first portfolio built with Next.js, React, and Google Gemini. The AI chatbot answers questions about my work and surfaces relevant blog posts.",
-      "techStack": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Gemini AI", "Vercel"],
+      "description": "Production Next.js 15 portfolio with an agentic chatbot using Vercel AI SDK. Implements tool-use chaining (up to 3 steps per turn) with tools for resume, projects, skills, contact, blog search, and on-demand MDX post content retrieval. Multi-model fallback (Gemini → OpenAI) with in-flight retry logic and server-side quota tracking.",
+      "techStack": ["Next.js 15", "React", "TypeScript", "Tailwind CSS", "Vercel AI SDK", "OpenAI", "Google Gemini", "Vercel"],
       "date": "2026",
       "status": "Active",
       "featured": true,
       "links": {
         "github": "https://github.com/ktnCodes/ktncodes-v2",
-        "live": "https://ktncodes.vercel.app"
+        "live": "https://ktncodes.com"
       }
     },
     {
