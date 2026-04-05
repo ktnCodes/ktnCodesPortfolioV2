@@ -69,5 +69,15 @@ export interface PortfolioConfig {
     tone: string;
     topics: string[];
   };
+  personal_life: {
+    cats: { name: string; description: string }[];
+    relationship: string;
+    hobbies: string[];
+    gaming: {
+      competitive: string[];
+      casual: string[];
+    };
+    off_limits: string[];
+  };
   presetQuestions: PresetQuestion[];
 }

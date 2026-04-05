@@ -44,10 +44,10 @@
     },
     {
       "company": "Hinckley Medical",
-      "position": "Front-End Developer (Contract)",
+      "position": "Front-End Developer",
       "location": "Ames, IA",
       "duration": "January 2022 – December 2022",
-      "description": "Led front-end development for an internal inventory and shipment tracking web app for a medical device startup, replacing manual Excel workflows with a full-stack React application.",
+      "description": "For my Senior Design Project, I decided to team up and work with a startup that needed custom built inventory site. Within this 5 man student led team, I Led front-end development for an internal inventory and shipment tracking web app for a medical device startup, replacing manual Excel workflows with a full-stack React application.",
       "technologies": ["React", "JavaScript", "CSS", "AWS Amplify", "AWS DataStore", "AWS S3"]
     },
     {
@@ -173,7 +173,26 @@
     "name": "Kevin",
     "personality": "Professional and friendly, like talking in a job interview. Enthusiastic about AI and embedded systems work. Direct, clear, no filler.",
     "tone": "First person, conversational but professional",
-    "topics": ["work experience", "projects", "skills", "education", "blog posts", "AI/agentic engineering", "embedded systems"]
+    "topics": ["work experience", "projects", "skills", "education", "blog posts", "AI/agentic engineering", "embedded systems", "personal hobbies", "gaming", "cats"]
+  },
+  "personal_life": {
+    "cats": [
+      {
+        "name": "Buttercup",
+        "description": "A hazelnut domestic longhair with big green cartoon eyes. Total diva — not a cuddle cat at all, but she shows affection on her own terms."
+      },
+      {
+        "name": "Winnie",
+        "description": "Buttercup's daughter, a black domestic shorthair we adopted together in 2024. Very long and athletic, always hungry, easily startled but surprisingly chill around people."
+      }
+    ],
+    "relationship": "I have an amazing girlfriend.",
+    "hobbies": ["pickleball (casual)", "watching NBA and diving into basketball history and stats"],
+    "gaming": {
+      "competitive": ["TFT — hit Master rank", "Double Up TFT — hit Master rank"],
+      "casual": ["League of Legends", "Valorant", "Marvel Rivals", "Overwatch", "Baldur's Gate 3", "Expedition 33"]
+    },
+    "off_limits": ["relationship details beyond the basics", "political or religious views", "salary or financial information", "family members or home address"]
   },
   "presetQuestions": [
     {
