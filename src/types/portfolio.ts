@@ -17,6 +17,8 @@ export interface Education {
 export interface Experience {
   company: string;
   position: string;
+  link?: string;
+  linkLabel?: string;
   location: string;
   duration: string;
   description: string;

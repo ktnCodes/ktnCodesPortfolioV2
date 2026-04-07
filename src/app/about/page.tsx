@@ -55,7 +55,26 @@ export default function AboutPage() {
           {experience.map((exp, i) => (
             <div key={i} className="relative pl-6 border-l-2 border-border">
               <div className="absolute -left-[7px] top-1 w-3 h-3 rounded-full bg-accent" />
-              <h3 className="font-semibold text-lg">{exp.position}</h3>
+              <h3 className="font-semibold text-lg">
+                {exp.link && exp.linkLabel ? (() => {
+                  const idx = exp.position.indexOf(exp.linkLabel!);
+                  if (idx === -1) return exp.position;
+                  return (
+                    <>
+                      {exp.position.slice(0, idx)}
+                      <a
+                        href={exp.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline underline-offset-2 hover:text-accent transition-colors"
+                      >
+                        {exp.linkLabel}
+                      </a>
+                      {exp.position.slice(idx + exp.linkLabel!.length)}
+                    </>
+                  );
+                })() : exp.position}
+              </h3>
               <p className="text-accent text-sm">
                 {exp.company} &middot; {exp.location}
               </p>

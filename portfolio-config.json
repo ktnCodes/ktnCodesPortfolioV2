@@ -20,7 +20,9 @@
   "experience": [
     {
       "company": "John Deere",
-      "position": "Embedded Software Engineer — AutoPath Team",
+      "position": "Embedded Software Engineer — AutoPath",
+      "link": "https://www.deere.com/en/technology-products/precision-ag-technology/guidance/autopath/",
+      "linkLabel": "AutoPath",
       "location": "Austin, TX",
       "duration": "June 2024 – Present",
       "description": "Primarily focused on developing features for AutoPath. Responsibilities include design, developing, and testing supported AutoPath product lines such as Boundaries, Rows, Zones, Pro, and more to ensure high quality. Some side projects that I led for the team are applying and implementing refactoring on the most modified service class in the AutoPath codebase; Used AI to automate the process with a refactor tool combining Python scripting and agentic tooling across a 7-layer pipeline following company SDK and best practices from a book called Working Effectively with Legacy Code by Michael Feathers. Built a documentation system serving as the team’s and LLM’s living PRD, onboarding hub, AI-consumable knowledge base and covering 4 product Boundary, Rows, Zones, PRO. 30+ vehicle models, and 26 features. Created 6 specialized AI skills and scripts for automated test generation, requirement extraction, test coverage analysis, test-to-requirement mapping, refactoring with safety nets, and LLM architecture diagramming. Drove GitHub Copilot adoption across the team from 0% to daily interaction through multiple presentations on agentic engineering Demos, CLI workflows, prompting techniques, and AI-assisted refactoring.",
@@ -28,15 +30,15 @@
     },
     {
       "company": "John Deere",
-      "position": "QA/QI Software Engineer — Guidance QI Team",
+      "position": "QA/QI Software Engineer — Guidance QI",
       "location": "Austin, TX",
       "duration": "February 2023 – June 2024",
-      "description": "Deep-debug specialist resolving 38 major and 60+ minor defects across Gen4OS 4060 & 4600 displays. Diagnosed SIGSEGV/SIGABRT crashes and threading defects (race conditions, deadlocks, priority inversion) using GDB, valgrind, and ASAN. Executed SiL and on-vehicle testing with tractors and combines. Led daily stand-ups during manager absence and onboarded 3 engineers — earning direct recognition for accelerating new-hire ramp-up.",
+      "description": "Deep-debug specialist resolving 38 major and 60+ minor defects across Gen4OS 4060 & 4600 displays. Diagnosed SIGSEGV/SIGABRT crashes and threading defects (race conditions, deadlocks, priority inversion) using GDB, valgrind, and ASAN. Executed SiL and on-vehicle testing with tractors and combines. Received one of six Guidance Department Star Award for resolving the team's most complex escalated defects, standing in as team lead during manager absence, and delivering senior-level technical updates directly to department leadership.",
       "technologies": ["C++", "Qt", "GDB", "Valgrind", "ASAN", "Google Test", "Froglogic Squish"]
     },
     {
       "company": "John Deere",
-      "position": "Part-Time Software Engineer — Guidance QI Team",
+      "position": "Part-Time Software Engineer — Guidance QI",
       "location": "Ames, IA",
       "duration": "July 2021 – December 2022",
       "description": "Conducted embedded software testing while enrolled full-time at Iowa State. Resolved 24 confirmed defects using Google Test and Froglogic Squish. Refactored AutoTrac PieState logic into an independent component. Self-taught C++ and Qt through Udemy courses within 6 months of joining.",
