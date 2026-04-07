@@ -20,7 +20,7 @@
   "experience": [
     {
       "company": "John Deere",
-      "position": "Embedded Software Developer — AutoPath Team",
+      "position": "Embedded Software Engineer — AutoPath Team",
       "location": "Austin, TX",
       "duration": "June 2024 – Present",
       "description": "Primarily focused on developing features for AutoPath. Responsibilities include design, developing, and testing supported AutoPath product lines such as Boundaries, Rows, Zones, Pro, and more to ensure high quality. Some side projects that I led for the team are applying and implementing refactoring on the most modified service class in the AutoPath codebase; Used AI to automate the process with a refactor tool combining Python scripting and agentic tooling across a 7-layer pipeline following company SDK and best practices from a book called Working Effectively with Legacy Code by Michael Feathers. Built a documentation system serving as the team’s and LLM’s living PRD, onboarding hub, AI-consumable knowledge base and covering 4 product Boundary, Rows, Zones, PRO. 30+ vehicle models, and 26 features. Created 6 specialized AI skills and scripts for automated test generation, requirement extraction, test coverage analysis, test-to-requirement mapping, refactoring with safety nets, and LLM architecture diagramming. Drove GitHub Copilot adoption across the team from 0% to daily interaction through multiple presentations on agentic engineering Demos, CLI workflows, prompting techniques, and AI-assisted refactoring.",
