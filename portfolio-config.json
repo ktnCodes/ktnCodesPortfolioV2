@@ -4,7 +4,7 @@
     "title": "Software Engineer — Embedded Systems & AI/Agentic Engineering",
     "email": "",
     "location": "Austin, TX",
-    "bio": "Software Engineer with 4+ years at John Deere spanning embedded QA/QI and feature development on precision agriculture displays, now pivoting toward AI-assisted development and agentic engineering. Built a 316-file AI-integrated engineering knowledge system with custom agents, specialized skills, and Python tooling — then championed team-wide GitHub Copilot adoption from zero to daily use. Combines a systematic investigation methodology proven across 98+ production defects with end-to-end feature delivery (hackathon spike → 8 production stories shipped). Rare blend of deep systems debugging experience, AI developer tooling creation, and developer experience engineering.",
+    "bio": "Software Engineer with 4+ years building production embedded systems and AI-powered developer tools at John Deere. Architected an AI-integrated knowledge system with custom agents, specialized SKILLS, Hooks, and Python tooling, then drove team-wide agentic tooling adoption from zero to general use. Experience in deep C++ systems debugging across 100+ production defects with end-to-end feature delivery. Bridged embedded systems engineering and agentic AI with hands-on experience in agent orchestration, Model Context Protocol integration, Spec Precision and Context architecture workflows.",
     "avatar": "/avatar.png"
   },
   "education": {
@@ -20,10 +20,10 @@
   "experience": [
     {
       "company": "John Deere",
-      "position": "Software Developer — AutoPath Team",
+      "position": "Embedded Software Developer — AutoPath Team",
       "location": "Austin, TX",
       "duration": "June 2024 – Present",
-      "description": "Feature development on Gen4OS precision agriculture displays. Delivered AB-Curves for AutoPath Boundaries (hackathon spike → 8 production stories shipped in release 26.2). Led 6+ story AutoPathTrackService refactoring. Discovered 5 critical threading issues in AutomationEnginePlanner and designed the AEPathPlannerProxy architecture to resolve a confirmed use-after-free crash. Built a 316-file AI-integrated engineering knowledge system with custom agents and skills. Drove team-wide GitHub Copilot adoption from 0% to daily use. Delivered 90 story points in 2025 and 32 in Q1 2026 (6.0 pts/sprint, exceeding the 4–5 pt expectation).",
+      "description": "Primarily focused on developing features for AutoPath. Responsibilities include design, developing, and testing supported AutoPath product lines such as Boundaries, Rows, Zones, Pro, and more to ensure high quality. Some side projects that I led for the team are applying and implementing refactoring on the most modified service class in the AutoPath codebase; Used AI to automate the process with a refactor tool combining Python scripting and agentic tooling across a 7-layer pipeline following company SDK and best practices from a book called Working Effectively with Legacy Code by Michael Feathers. Built a documentation system serving as the team’s and LLM’s living PRD, onboarding hub, AI-consumable knowledge base and covering 4 product Boundary, Rows, Zones, PRO. 30+ vehicle models, and 26 features. Created 6 specialized AI skills and scripts for automated test generation, requirement extraction, test coverage analysis, test-to-requirement mapping, refactoring with safety nets, and LLM architecture diagramming. Drove GitHub Copilot adoption across the team from 0% to daily interaction through multiple presentations on agentic engineering Demos, CLI workflows, prompting techniques, and AI-assisted refactoring.",
       "technologies": ["C++14", "Qt5", "Embedded Linux", "Google Test", "CMake", "Python", "MkDocs"]
     },
     {
@@ -55,7 +55,7 @@
       "position": "IT Technical Assistant",
       "location": "Ames, IA",
       "duration": "February 2020 – July 2021",
-      "description": "Resolved 200+ technical support tickets. Primary Apple technician deploying Jamf Pro and custom Python scripts across campus.",
+      "description": "Primary Apple technician deploying Jamf Pro and custom Python scripts. Resolved technical support tickets across campus.",
       "technologies": ["Python", "Jamf Pro", "macOS"]
     }
   ],
