@@ -4,11 +4,36 @@ import { Skills } from "@/components/tools/skills";
 import { Resume } from "@/components/tools/resume";
 import { Contact } from "@/components/tools/contact";
 import { BlogPosts } from "@/components/tools/blog-posts";
+import { ToolDisclosure } from "./tool-disclosure";
 
 interface ToolPart {
   type: string;
   state: string;
   output?: Record<string, unknown>;
+}
+
+function getLabel(toolName: string, data: Record<string, unknown>): string {
+  switch (toolName) {
+    case "getPresentation":
+      return "About Kevin";
+    case "getProjects":
+      return `Projects (${(data.projects as unknown[]).length})`;
+    case "getBlogPosts": {
+      const posts = data.posts as unknown[];
+      const q = data.query as string;
+      return q === "recent"
+        ? `Recent posts (${posts.length})`
+        : `Posts related to "${q}" (${posts.length})`;
+    }
+    case "getResume":
+      return "Resume";
+    case "getSkills":
+      return "Skills";
+    case "getContact":
+      return "Contact info";
+    default:
+      return "Details";
+  }
 }
 
 export function ToolRenderer({ part }: { part: ToolPart }) {
@@ -22,41 +47,51 @@ export function ToolRenderer({ part }: { part: ToolPart }) {
   }
 
   const data = part.output;
-  // part.type is "tool-getPresentation", "tool-getProjects", etc.
   const toolName = part.type.replace(/^tool-/, "");
+  const label = getLabel(toolName, data);
+
+  let content: React.ReactNode = null;
 
   switch (toolName) {
     case "getPresentation":
-      return (
+      content = (
         <Presentation
           personal={data.personal as never}
           education={data.education as never}
         />
       );
+      break;
     case "getProjects":
-      return <Projects projects={data.projects as never} />;
+      content = <Projects projects={data.projects as never} />;
+      break;
     case "getSkills":
-      return <Skills skills={data.skills as never} />;
+      content = <Skills skills={data.skills as never} />;
+      break;
     case "getResume":
-      return (
+      content = (
         <Resume
           experience={data.experience as never}
           education={data.education as never}
           resumeUrl={data.resumeUrl as string}
         />
       );
+      break;
     case "getContact":
-      return (
+      content = (
         <Contact email={data.email as string} social={data.social as never} />
       );
+      break;
     case "getBlogPosts":
-      return (
+      content = (
         <BlogPosts
           posts={data.posts as never}
           query={data.query as string}
         />
       );
+      break;
     default:
       return null;
   }
+
+  return <ToolDisclosure label={label}>{content}</ToolDisclosure>;
 }

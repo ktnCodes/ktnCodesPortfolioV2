@@ -19,11 +19,28 @@ export function ChatMessage({ message }: { message: UIMessage }) {
     );
   }
 
+  const parts = message.parts;
+
   return (
     <div className="flex justify-start">
       <div className="max-w-[90%] space-y-3">
-        {message.parts.map((part, i) => {
+        {parts.map((part, i) => {
           if (part.type === "text" && part.text.trim()) {
+            // If the previous non-null part was a tool, render as inline caption
+            const prevTool = parts
+              .slice(0, i)
+              .reverse()
+              .find((p) => p.type !== "text");
+            const isCaption = prevTool?.type.startsWith("tool-");
+
+            if (isCaption) {
+              return (
+                <p key={i} className="text-sm text-muted/80 leading-relaxed px-1">
+                  {part.text}
+                </p>
+              );
+            }
+
             return (
               <div
                 key={i}

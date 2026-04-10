@@ -11,7 +11,7 @@ export default function TagsPage() {
   const tags = getAllTags();
 
   return (
-    <div className="mx-auto max-w-4xl px-4 sm:px-6 py-12">
+    <div className="mx-auto max-w-4xl w-full px-4 sm:px-6 py-12 overflow-y-auto">
       <h1 className="text-3xl font-bold mb-8">Tags</h1>
       <div className="flex flex-wrap gap-3">
         {tags.map(({ tag, count }) => (

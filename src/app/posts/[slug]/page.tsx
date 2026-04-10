@@ -36,7 +36,7 @@ export default async function PostPage({
   return (
     <>
       <ScrollProgress />
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 py-12">
+      <div className="mx-auto max-w-4xl w-full px-4 sm:px-6 py-12 overflow-y-auto">
         <PostHeader post={post} />
         <MdxContent source={post.content} />
       </div>

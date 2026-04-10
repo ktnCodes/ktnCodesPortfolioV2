@@ -12,7 +12,7 @@ export default function PostsPage() {
   const posts = getAllPostMeta();
 
   return (
-    <div className="mx-auto max-w-4xl px-4 sm:px-6 py-12">
+    <div className="mx-auto max-w-4xl w-full px-4 sm:px-6 py-12 overflow-y-auto">
       <h1 className="text-3xl font-bold mb-8">Posts</h1>
       <div className="space-y-4">
         {posts.map((post) => (

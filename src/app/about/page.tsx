@@ -14,7 +14,7 @@ export default function AboutPage() {
   const { personal, education, experience, skills, social } = config;
 
   return (
-    <div className="mx-auto max-w-4xl px-4 sm:px-6 py-12">
+    <div className="mx-auto max-w-4xl w-full px-4 sm:px-6 py-12 overflow-y-auto">
       {/* Header */}
       <section className="mb-12">
         <div className="flex items-start gap-5 mb-4">

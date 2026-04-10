@@ -12,7 +12,7 @@ export default function ArchivesPage() {
   const archives = getArchivesByYear();
 
   return (
-    <div className="mx-auto max-w-4xl px-4 sm:px-6 py-12">
+    <div className="mx-auto max-w-4xl w-full px-4 sm:px-6 py-12 overflow-y-auto">
       <h1 className="text-3xl font-bold mb-8">Archives</h1>
       <div className="space-y-8">
         {archives.map(({ year, posts }) => (

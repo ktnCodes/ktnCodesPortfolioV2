@@ -47,10 +47,10 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable}`}
     >
-      <body className="min-h-screen flex flex-col bg-background text-foreground antialiased">
+      <body suppressHydrationWarning className="h-dvh flex flex-col bg-background text-foreground antialiased overflow-hidden">
         <ThemeProvider>
           <Navbar />
-          <main className="flex-1 flex flex-col">{children}</main>
+          <main className="flex-1 flex flex-col min-h-0 overflow-hidden">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

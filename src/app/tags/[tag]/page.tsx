@@ -29,7 +29,7 @@ export default async function TagPage({
   const posts = getPostsByTag(decoded);
 
   return (
-    <div className="mx-auto max-w-4xl px-4 sm:px-6 py-12">
+    <div className="mx-auto max-w-4xl w-full px-4 sm:px-6 py-12 overflow-y-auto">
       <h1 className="text-3xl font-bold mb-2">
         <span className="text-accent">#</span>{decoded}
       </h1>
