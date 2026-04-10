@@ -23,6 +23,7 @@ export interface Experience {
   duration: string;
   description: string;
   technologies: string[];
+  highlights?: string[];
 }
 
 export interface Skills {

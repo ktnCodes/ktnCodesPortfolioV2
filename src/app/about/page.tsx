@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getConfig } from "@/lib/config";
 import { formatSkillCategory } from "./utils";
 
@@ -16,9 +17,22 @@ export default function AboutPage() {
     <div className="mx-auto max-w-4xl px-4 sm:px-6 py-12">
       {/* Header */}
       <section className="mb-12">
-        <h1 className="text-3xl font-bold mb-4">{personal.name}</h1>
-        <p className="text-accent text-lg font-medium mb-2">{personal.title}</p>
-        <p className="text-muted mb-1">{personal.location}</p>
+        <div className="flex items-start gap-5 mb-4">
+          <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-accent/30 flex-shrink-0">
+            <Image
+              src="/avatarwithWinnie.jpg"
+              alt="Kevin Nguyen"
+              fill
+              className="object-cover object-top"
+              priority
+            />
+          </div>
+          <div>
+            <h1 className="text-3xl font-bold mb-1">{personal.name}</h1>
+            <p className="text-accent text-lg font-medium mb-1">{personal.title}</p>
+            <p className="text-muted text-sm">{personal.location}</p>
+          </div>
+        </div>
         <p className="text-foreground/90 mt-4 leading-relaxed max-w-2xl">
           {personal.bio}
         </p>
@@ -78,7 +92,19 @@ export default function AboutPage() {
               <p className="text-accent text-sm">
                 {exp.company} &middot; {exp.location}
               </p>
-              <p className="text-muted text-sm mb-2">{exp.duration}</p>
+              <p className="text-muted text-sm mb-3">{exp.duration}</p>
+              {exp.highlights && exp.highlights.length > 0 && (
+                <div className="flex flex-wrap gap-1.5 mb-3">
+                  {exp.highlights.map((h) => (
+                    <span
+                      key={h}
+                      className="px-2.5 py-0.5 text-xs rounded-full bg-accent/10 border border-accent/20 text-accent font-medium"
+                    >
+                      {h}
+                    </span>
+                  ))}
+                </div>
+              )}
               <p className="text-foreground/80 text-sm leading-relaxed">
                 {exp.description}
               </p>

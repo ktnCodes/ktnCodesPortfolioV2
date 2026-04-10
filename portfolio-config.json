@@ -26,7 +26,8 @@
       "location": "Austin, TX",
       "duration": "June 2024 – Present",
       "description": "Primarily focused on developing features for AutoPath. Responsibilities include design, developing, and testing supported AutoPath product lines such as Boundaries, Rows, Zones, Pro, and more to ensure high quality. Some side projects that I led for the team are applying and implementing refactoring on the most modified service class in the AutoPath codebase; Used AI to automate the process with a refactor tool combining Python scripting and agentic tooling across a 7-layer pipeline following company SDK and best practices from a book called Working Effectively with Legacy Code by Michael Feathers. Built a documentation system serving as the team’s and LLM’s living PRD, onboarding hub, AI-consumable knowledge base and covering 4 product Boundary, Rows, Zones, PRO. 30+ vehicle models, and 26 features. Created 6 specialized AI skills and scripts for automated test generation, requirement extraction, test coverage analysis, test-to-requirement mapping, refactoring with safety nets, and LLM architecture diagramming. Drove GitHub Copilot adoption across the team from 0% to daily interaction through multiple presentations on agentic engineering Demos, CLI workflows, prompting techniques, and AI-assisted refactoring.",
-      "technologies": ["C++14", "Qt5", "Embedded Linux", "Google Test", "CMake", "Python", "MkDocs"]
+      "technologies": ["C++14", "Qt5", "Embedded Linux", "Google Test", "CMake", "Python", "MkDocs"],
+      "highlights": ["6 AI skills built", "4 product lines documented", "0% → daily Copilot adoption"]
     },
     {
       "company": "John Deere",
@@ -34,7 +35,8 @@
       "location": "Austin, TX",
       "duration": "February 2023 – June 2024",
       "description": "Deep-debug specialist resolving 38 major and 60+ minor defects across Gen4OS 4060 & 4600 displays. Diagnosed SIGSEGV/SIGABRT crashes and threading defects (race conditions, deadlocks, priority inversion) using GDB, valgrind, and ASAN. Executed SiL and on-vehicle testing with tractors and combines. Received one of six Guidance Department Star Award for resolving the team's most complex escalated defects, standing in as team lead during manager absence, and delivering senior-level technical updates directly to department leadership.",
-      "technologies": ["C++", "Qt", "GDB", "Valgrind", "ASAN", "Google Test", "Froglogic Squish"]
+      "technologies": ["C++", "Qt", "GDB", "Valgrind", "ASAN", "Google Test", "Froglogic Squish"],
+      "highlights": ["38 major defects resolved", "60+ minor defects", "Dept. Star Award"]
     },
     {
       "company": "John Deere",
@@ -42,7 +44,8 @@
       "location": "Ames, IA",
       "duration": "July 2021 – December 2022",
       "description": "Conducted embedded software testing while enrolled full-time at Iowa State. Resolved 24 confirmed defects using Google Test and Froglogic Squish. Refactored AutoTrac PieState logic into an independent component. Self-taught C++ and Qt through Udemy courses within 6 months of joining.",
-      "technologies": ["C++", "CMake", "Qt", "CAN Protocol", "Ubuntu Linux"]
+      "technologies": ["C++", "CMake", "Qt", "CAN Protocol", "Ubuntu Linux"],
+      "highlights": ["24 confirmed defects", "self-taught C++ in 6 months"]
     },
     {
       "company": "Hinckley Medical",
@@ -50,15 +53,17 @@
       "location": "Ames, IA",
       "duration": "January 2022 – December 2022",
       "description": "For my Senior Design Project, I decided to team up and work with a startup that needed custom built inventory site. Within this 5 man student led team, I Led front-end development for an internal inventory and shipment tracking web app for a medical device startup, replacing manual Excel workflows with a full-stack React application.",
-      "technologies": ["React", "JavaScript", "CSS", "AWS Amplify", "AWS DataStore", "AWS S3"]
+      "technologies": ["React", "JavaScript", "CSS", "AWS Amplify", "AWS DataStore", "AWS S3"],
+      "highlights": ["5-person student team", "replaced manual Excel workflows"]
     },
     {
       "company": "ISU Endpoint Technologies",
       "position": "IT Technical Assistant",
       "location": "Ames, IA",
       "duration": "February 2020 – July 2021",
-      "description": "Primary Apple technician deploying Jamf Pro and custom Python scripts. Resolved technical support tickets across campus.",
-      "technologies": ["Python", "Jamf Pro", "macOS"]
+      "description": "Primary Apple technician deploying Jamf Pro and writing custom Python scripts for device management. Administered software licenses, performed equipment installations, OS imaging, and hardware/software troubleshooting for staff workstations and portable devices. Coordinated with full-time IT staff remotely for advanced troubleshooting. Led new part-time technicians on help desk tasks including hardware/software installations, macOS system administration, and inventory management and deliveries.",
+      "technologies": ["Python", "Jamf Pro", "macOS", "Windows", "Help Desk"],
+      "highlights": ["led part-time technicians", "macOS + Windows support"]
     }
   ],
   "skills": {
