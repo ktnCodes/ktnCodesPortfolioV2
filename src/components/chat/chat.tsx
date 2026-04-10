@@ -37,7 +37,7 @@ export function Chat() {
   return (
     <div className="flex-1 flex flex-col min-h-0">
       {!hasMessages ? (
-        <ChatLanding onSelect={handlePresetSelect} />
+        <ChatLanding onSelect={handlePresetSelect} isLoading={isLoading} />
       ) : (
         <div
           ref={scrollRef}

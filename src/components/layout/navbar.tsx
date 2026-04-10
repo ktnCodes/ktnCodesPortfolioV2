@@ -42,7 +42,7 @@ export function Navbar() {
                 className={cn(
                   "px-3 py-1.5 rounded-md text-sm transition-colors",
                   pathname === link.href
-                    ? "text-accent bg-surface"
+                    ? "text-accent bg-surface border-b-2 border-accent"
                     : "text-muted hover:text-foreground hover:bg-surface"
                 )}
               >
@@ -76,7 +76,7 @@ export function Navbar() {
                 className={cn(
                   "block px-3 py-2 rounded-md text-sm transition-colors",
                   pathname === link.href
-                    ? "text-accent bg-surface"
+                    ? "text-accent bg-surface border-b-2 border-accent"
                     : "text-muted hover:text-foreground hover:bg-surface"
                 )}
               >

@@ -16,7 +16,7 @@ export function PostHeader({ post }: { post: PostMeta }) {
           <Link
             key={tag}
             href={`/tags/${tag}`}
-            className="px-2 py-0.5 text-xs rounded bg-surface border border-border text-muted hover:text-accent hover:border-accent/40 transition-colors"
+            className="px-2 py-0.5 text-xs rounded bg-accent/10 border border-accent/30 text-accent hover:bg-accent/20 hover:border-accent/50 transition-colors"
           >
             {tag}
           </Link>

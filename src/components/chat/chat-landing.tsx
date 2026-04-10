@@ -16,9 +16,10 @@ const pillars = ["Embedded Systems", "Agentic Engineering", "Production C++"];
 
 interface Props {
   onSelect: (question: string) => void;
+  isLoading?: boolean;
 }
 
-export function ChatLanding({ onSelect }: Props) {
+export function ChatLanding({ onSelect, isLoading = false }: Props) {
   return (
     <div className="flex-1 flex flex-col items-center justify-center px-4 gap-8 relative overflow-hidden">
       {/* Background glow */}
@@ -29,7 +30,7 @@ export function ChatLanding({ onSelect }: Props) {
 
       <div className="text-center space-y-4 relative">
         <div className="flex items-center justify-center gap-3 mb-1">
-          <div className="relative w-36 h-36 rounded-full overflow-hidden border-2 border-accent/30 flex-shrink-0">
+          <div className="relative w-36 h-36 rounded-full overflow-hidden border-2 border-accent/30 hover:border-accent/60 transition-colors flex-shrink-0">
             <Image
               src="/avatarwithWinnie.jpg"
               alt="Kevin Nguyen"
@@ -60,7 +61,7 @@ export function ChatLanding({ onSelect }: Props) {
           {pillars.map((pill) => (
             <span
               key={pill}
-              className="px-3 py-1 text-xs rounded-full border border-accent/30 text-accent/80 bg-accent/5"
+              className="px-3 py-1 text-xs rounded-full border border-accent/30 text-accent bg-accent/10"
             >
               {pill}
             </span>
@@ -73,7 +74,8 @@ export function ChatLanding({ onSelect }: Props) {
           <button
             key={q.label}
             onClick={() => onSelect(q.label)}
-            className="flex items-center gap-3 rounded-xl border border-border bg-surface px-4 py-4 text-sm text-left hover:border-accent/50 hover:bg-surface/80 transition-all group"
+            disabled={isLoading}
+            className="flex items-center gap-3 rounded-xl border border-border bg-surface px-4 py-4 text-sm text-left hover:border-accent/50 hover:bg-surface/80 active:scale-95 active:brightness-90 transition-all group disabled:opacity-40 disabled:cursor-not-allowed"
           >
             <span className="p-2 rounded-lg bg-background border border-border text-muted group-hover:text-accent group-hover:border-accent/40 transition-colors flex-shrink-0">
               {icons[q.tool] ?? <User className="w-4 h-4" />}

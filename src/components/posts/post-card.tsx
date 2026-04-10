@@ -4,7 +4,7 @@ import type { PostMeta } from "@/types/posts";
 
 export function PostCard({ post }: { post: PostMeta }) {
   return (
-    <article className="group relative rounded-lg border border-border bg-surface p-6 transition-all hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5">
+    <article className="group relative rounded-lg border border-border bg-surface p-6 transition-all hover:border-accent/40 hover:brightness-110">
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-3 text-sm text-muted">
           <time dateTime={post.date}>{formatDate(post.date)}</time>
@@ -28,7 +28,7 @@ export function PostCard({ post }: { post: PostMeta }) {
           {post.tags.map((tag) => (
             <span
               key={tag}
-              className="relative z-10 px-2 py-0.5 text-xs rounded bg-background border border-border text-muted hover:text-accent hover:border-accent/40 transition-colors"
+              className="relative z-10 px-2 py-0.5 text-xs rounded bg-accent/10 border border-accent/30 text-accent hover:bg-accent/20 hover:border-accent/50 transition-colors"
             >
               <Link href={`/tags/${tag}`}>{tag}</Link>
             </span>

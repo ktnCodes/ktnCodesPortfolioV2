@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getAllPostMeta, getPostBySlug } from "@/lib/posts";
 import { PostHeader } from "@/components/posts/post-header";
 import { MdxContent } from "@/components/posts/mdx-content";
+import { ScrollProgress } from "@/components/posts/scroll-progress";
 
 export async function generateStaticParams() {
   return getAllPostMeta().map((post) => ({ slug: post.slug }));
@@ -33,9 +34,12 @@ export default async function PostPage({
   if (!post) notFound();
 
   return (
-    <div className="mx-auto max-w-4xl px-4 sm:px-6 py-12">
-      <PostHeader post={post} />
-      <MdxContent source={post.content} />
-    </div>
+    <>
+      <ScrollProgress />
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 py-12">
+        <PostHeader post={post} />
+        <MdxContent source={post.content} />
+      </div>
+    </>
   );
 }
