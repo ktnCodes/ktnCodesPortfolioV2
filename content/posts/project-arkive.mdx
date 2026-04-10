@@ -12,6 +12,8 @@ Your most personal data is scattered across a dozen apps, and none of them talk 
 
 The data is there. There's just no way to query across it.
 
+The idea for Arkive came from my own setup. I use Obsidian as a personal knowledge base — influenced by Andrej Karpathy's approach to building a long-term, local-first second brain. It works really well for notes, research, and work documentation. But it only captures what you actively write down. Your photos, your iMessages, your Snapchat memories — all the passive data that actually makes up most of your life — lives outside of it. Arkive is an attempt to close that gap: bring the passive data into the same local, queryable structure.
+
 The obvious solutions all have the same problem: they're cloud-first. Limitless, Rewind, Apple Intelligence, Notion AI — they all require sending your most personal data to a server you don't control, behind a subscription, with a privacy policy that can change. For photos and iMessages, that's a hard no for me.
 
 Arkive is my answer to that: a local-first C++ desktop application that ingests your personal data, compiles it into a structured wiki on your machine, and lets you query it with a chat interface backed by a locally-running LLM. Nothing leaves your device unless you explicitly opt in.
@@ -53,7 +55,7 @@ The goal was to build a real desktop application — not a web app wrapped in a 
 - CMake + Ninja at this project scale feels appropriately sized. No bundler complexity, no Node toolchain, just a build system that does exactly what you tell it.
 - Testing with Google Test on a C++ application gives you actual isolation. 92 unit tests cover every core module. Running them takes under a second.
 
-The tradeoff is velocity — Electron apps ship faster. But the goal was a portfolio piece I'd be proud to show a C++ systems team, not the fastest path to an MVP.
+The tradeoff is velocity — Electron apps ship faster. But the desktop version is intentionally the first iteration, not the final product. The goal is to validate the concept — prove the ingestion pipeline, the wiki compilation, and the chat interface actually work the way I think they will. If it does, the next iteration is a mobile app. Qt supports cross-platform deployment to iOS and Android from the same codebase, so the architecture decisions made now carry forward.
 
 ## LLM Strategy
 
