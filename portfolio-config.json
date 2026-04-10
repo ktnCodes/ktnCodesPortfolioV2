@@ -34,8 +34,8 @@
       "position": "QA/QI Software Engineer — Guidance QI",
       "location": "Austin, TX",
       "duration": "February 2023 – June 2024",
-      "description": "Deep-debug specialist resolving 38 major and 60+ minor defects across Gen4OS 4060 & 4600 displays. Diagnosed SIGSEGV/SIGABRT crashes and threading defects (race conditions, deadlocks, priority inversion) using GDB, valgrind, and ASAN. Executed SiL and on-vehicle testing with tractors and combines. Received one of six Guidance Department Star Award for resolving the team's most complex escalated defects, standing in as team lead during manager absence, and delivering senior-level technical updates directly to department leadership.",
-      "technologies": ["C++", "Qt", "GDB", "Valgrind", "ASAN", "Google Test", "Froglogic Squish"],
+      "description": "Deep-debug specialist resolving 38 major and 60+ minor defects across Gen4OS 4060 & 4600 displays. Diagnosed SIGSEGV/SIGABRT crashes and threading defects (race conditions, deadlocks, priority inversion) using GDB, valgrind, and ASAN. Executed SiL (Software-in-the-Loop) and on-vehicle verification testing with tractors and combines; used Pumba (Java-based vehicle simulator with HTTP REST API) to drive automated system-level tests without physical hardware. Debugged vehicle defects using CAN data analysis tooling — ATPerformanceTool for live CAN bus monitoring and CAN Sniff for log-based vehicle signal analysis with MATLAB Simulink visualization. Received one of six Guidance Department Star Award for resolving the team's most complex escalated defects, standing in as team lead during manager absence, and delivering senior-level technical updates directly to department leadership.",
+      "technologies": ["C++", "Qt", "GDB", "Valgrind", "ASAN", "Google Test", "Froglogic Squish", "CAN Protocol", "MATLAB Simulink", "Pumba"],
       "highlights": ["38 major defects resolved", "60+ minor defects", "Dept. Star Award"]
     },
     {
@@ -69,7 +69,7 @@
   "skills": {
     "languages": ["C++14", "C", "Python", "JavaScript", "TypeScript", "Java", "SQL"],
     "ai_agentic": ["Agent Instruction Authoring", "MCP Integration", "Prompt Engineering", "LLM-Assisted Workflows", "Claude Code", "GitHub Copilot", "ICM Methodology", "Vercel AI SDK", "FastMCP", "SBERT", "Obsidian/PKM"],
-    "embedded_systems": ["Gen4OS", "Embedded Linux", "CAN Protocol", "Qt5", "CMake", "JDX Build System"],
+    "embedded_systems": ["Gen4OS", "Embedded Linux", "CAN Protocol", "Qt5", "CMake", "JDX Build System", "MATLAB Simulink", "Pumba (Vehicle Simulator)"],
     "web_cloud": ["React", "Next.js", "Tailwind CSS", "Node.js", "AWS", "Hugo"],
     "debugging_testing": ["GDB", "Valgrind", "ASAN", "Google Test/Mock", "Froglogic Squish", "SiL/HiL Testing", "cppcheck", "clang-static-analyzer", "TDD"],
     "devops_tools": ["Git", "GitHub Actions", "Jenkins", "Docker", "MkDocs", "Ubuntu Linux"]
@@ -110,6 +110,18 @@
       "featured": true,
       "links": {
         "github": "https://github.com/ktnCodes/icm-template"
+      }
+    },
+    {
+      "title": "Arkive",
+      "category": "Desktop / C++",
+      "description": "Privacy-first desktop application (C++17, Qt 6/QML, CMake/Ninja) that ingests personal data — photos, iMessages, Snapchat exports — and compiles it into a queryable local wiki with a chat interface. Built from scratch with 8 modular subsystems (VaultManager, MarkdownParser, ExifReader, GeocodeCache, PhotoIngestor, and QAbstractItemModel-based Qt data models), 92 Google Test unit tests, and a hybrid LLM backend (llama.cpp local inference + Claude/OpenAI API) behind a common interface for swappable inference providers.",
+      "techStack": ["C++17", "Qt 6", "QML", "CMake", "Ninja", "Google Test", "llama.cpp", "Claude API"],
+      "date": "2026",
+      "status": "Active",
+      "featured": true,
+      "links": {
+        "github": "https://github.com/ktnCodes/arkive"
       }
     },
     {
