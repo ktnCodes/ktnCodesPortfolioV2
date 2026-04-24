@@ -17,6 +17,7 @@ const navLinks = [
 export function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const isHome = pathname === "/";
 
   function handleLogoClick(e: React.MouseEvent) {
     if (pathname === "/") {
@@ -26,35 +27,37 @@ export function Navbar() {
   }
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6">
+    <nav className="sticky top-0 z-50 border-b border-[var(--hairline)] bg-background/80 backdrop-blur-md">
+      <div className="mx-auto max-w-6xl px-6">
         <div className="flex h-14 items-center justify-between">
-          <Link href="/" onClick={handleLogoClick} className="text-lg font-bold text-accent hover:text-accent-hover transition-colors">
-            ktnCodes
+          <Link
+            href="/"
+            onClick={handleLogoClick}
+            className="small-caps text-sm text-foreground hover:text-accent transition-colors"
+          >
+            KTNCODES
           </Link>
 
-          {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "px-3 py-1.5 rounded-md text-sm transition-colors",
+                  "small-caps text-xs transition-colors",
                   pathname === link.href
-                    ? "text-accent bg-surface border-b-2 border-accent"
-                    : "text-muted hover:text-foreground hover:bg-surface"
+                    ? "text-foreground"
+                    : "text-muted hover:text-foreground"
                 )}
               >
                 {link.label}
               </Link>
             ))}
-            <ThemeToggle />
+            {!isHome && <ThemeToggle />}
           </div>
 
-          {/* Mobile menu button */}
           <div className="flex items-center gap-2 md:hidden">
-            <ThemeToggle />
+            {!isHome && <ThemeToggle />}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="p-2 text-muted hover:text-foreground transition-colors"
@@ -65,7 +68,6 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Mobile nav */}
         {mobileOpen && (
           <div className="pb-3 md:hidden">
             {navLinks.map((link) => (
@@ -74,10 +76,8 @@ export function Navbar() {
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
                 className={cn(
-                  "block px-3 py-2 rounded-md text-sm transition-colors",
-                  pathname === link.href
-                    ? "text-accent bg-surface border-b-2 border-accent"
-                    : "text-muted hover:text-foreground hover:bg-surface"
+                  "block py-2 small-caps text-xs",
+                  pathname === link.href ? "text-foreground" : "text-muted"
                 )}
               >
                 {link.label}
