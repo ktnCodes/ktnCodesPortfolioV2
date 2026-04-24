@@ -1,6 +1,5 @@
 "use client";
 
-import { Send, Square } from "lucide-react";
 import { useRef, type KeyboardEvent, type FormEvent } from "react";
 
 interface Props {
@@ -34,7 +33,7 @@ export function ChatInput({ input, setInput, onSubmit, isLoading, stop }: Props)
   return (
     <form
       onSubmit={onSubmit}
-      className="flex items-end gap-2 border-t border-border bg-background px-4 py-3"
+      className="flex items-end gap-2 border-t border-[var(--hairline)] bg-background px-4 py-3"
     >
       <textarea
         ref={inputRef}
@@ -44,27 +43,27 @@ export function ChatInput({ input, setInput, onSubmit, isLoading, stop }: Props)
           handleInput();
         }}
         onKeyDown={handleKeyDown}
-        placeholder="Ask me anything..."
+        placeholder="ASK KEVIN ANYTHING"
         rows={1}
-        className="flex-1 resize-none rounded-xl bg-surface border border-border px-4 py-2.5 text-sm placeholder:text-muted/60 focus:outline-none focus:border-accent/50 transition-colors"
+        className="flex-1 resize-none bg-transparent text-foreground small-caps text-xs tracking-widest placeholder:text-muted outline-none px-2 py-2.5 leading-tight"
       />
       {isLoading ? (
         <button
           type="button"
           onClick={stop}
-          className="shrink-0 p-2.5 rounded-xl bg-surface border border-border text-muted hover:text-foreground transition-colors"
+          className="shrink-0 small-caps text-xs tracking-widest border border-[var(--hairline)] text-muted hover:text-foreground hover:border-accent px-3 py-2.5 transition-colors"
           aria-label="Stop generating"
         >
-          <Square className="w-4 h-4" />
+          STOP
         </button>
       ) : (
         <button
           type="submit"
           disabled={!input.trim()}
-          className="shrink-0 p-2.5 rounded-xl bg-accent text-background disabled:opacity-30 disabled:cursor-not-allowed hover:bg-accent-hover active:scale-95 transition-all"
+          className="shrink-0 small-caps text-xs tracking-widest border border-accent text-accent hover:bg-accent hover:text-background disabled:opacity-30 disabled:cursor-not-allowed px-3 py-2.5 transition-colors"
           aria-label="Send message"
         >
-          <Send className="w-4 h-4" />
+          SEND
         </button>
       )}
     </form>

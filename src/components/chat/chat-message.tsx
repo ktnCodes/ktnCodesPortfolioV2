@@ -12,7 +12,7 @@ export function ChatMessage({ message }: { message: UIMessage }) {
 
     return (
       <div className="flex justify-end">
-        <div className="max-w-[80%] rounded-2xl rounded-br-sm bg-accent/15 border border-accent/30 px-4 py-2.5">
+        <div className="max-w-[80%] border border-accent bg-[var(--surface)] text-foreground px-4 py-3">
           <p className="text-sm whitespace-pre-wrap">{text}</p>
         </div>
       </div>
@@ -44,7 +44,7 @@ export function ChatMessage({ message }: { message: UIMessage }) {
             return (
               <div
                 key={i}
-                className="rounded-2xl rounded-bl-sm bg-surface border border-border px-4 py-2.5"
+                className="border border-[var(--hairline)] bg-[var(--surface)] text-foreground px-4 py-3"
               >
                 <p className="text-sm whitespace-pre-wrap leading-relaxed">
                   {part.text}

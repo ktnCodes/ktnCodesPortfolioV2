@@ -1,18 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import { User, Code2, Wrench, BookOpen } from "lucide-react";
 import { presetQuestions } from "@/lib/config";
-import type { ReactNode } from "react";
-
-const icons: Record<string, ReactNode> = {
-  getPresentation: <User className="w-4 h-4" />,
-  getProjects: <Code2 className="w-4 h-4" />,
-  getSkills: <Wrench className="w-4 h-4" />,
-  getBlogPosts: <BookOpen className="w-4 h-4" />,
-};
-
-const pillars = ["Embedded Systems", "Agentic Engineering", "Production C++"];
 
 interface Props {
   onSelect: (question: string) => void;
@@ -21,66 +9,24 @@ interface Props {
 
 export function ChatLanding({ onSelect, isLoading = false }: Props) {
   return (
-    <div className="flex-1 flex flex-col items-center justify-center px-4 gap-8 relative overflow-hidden">
-      {/* Background glow */}
-      <div
-        aria-hidden
-        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[280px] rounded-full bg-accent/10 blur-3xl pointer-events-none animate-[glow-pulse_8s_ease-in-out_infinite]"
-      />
-
-      <div className="text-center space-y-4 relative">
-        <div className="flex items-center justify-center gap-3 mb-1">
-          <div className="relative w-36 h-36 rounded-full overflow-hidden border-2 border-accent/30 hover:border-accent/60 transition-colors flex-shrink-0">
-            <Image
-              src="/avatarwithWinnie.jpg"
-              alt="Kevin Nguyen"
-              fill
-              className="object-cover object-top"
-              priority
-            />
-          </div>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
-            Hi, I&apos;m{" "}
-            <span
-              className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage:
-                  "linear-gradient(135deg, var(--accent) 0%, #67e8f9 100%)",
-              }}
-            >
-              Kevin
-            </span>
-            .
-          </h1>
+    <div className="flex-1 flex flex-col items-center justify-center px-6 py-10 gap-8 relative">
+      <div className="text-center space-y-3 max-w-md">
+        <div className="small-caps text-[11px] tracking-[0.2em] text-muted">
+          TRY ONE OF THESE
         </div>
-        <p className="text-muted text-lg max-w-md leading-relaxed">
-          Software Engineer building production embedded systems and AI-powered
-          developer tools.
+        <p className="text-sm text-muted leading-relaxed">
+          Short, grounded answers pulled from my notes. Pick a preset or ask your own.
         </p>
-        <div className="flex flex-wrap justify-center gap-2 pt-1">
-          {pillars.map((pill) => (
-            <span
-              key={pill}
-              className="px-3 py-1 text-xs rounded-full border border-accent/30 text-accent bg-accent/10"
-            >
-              {pill}
-            </span>
-          ))}
-        </div>
       </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-lg relative">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-xl">
         {presetQuestions.map((q) => (
           <button
             key={q.label}
             onClick={() => onSelect(q.label)}
             disabled={isLoading}
-            className="flex items-center gap-3 rounded-xl border border-border bg-surface px-4 py-4 text-sm text-left hover:border-accent/50 hover:bg-surface/80 active:scale-95 active:brightness-90 transition-all group disabled:opacity-40 disabled:cursor-not-allowed"
+            className="small-caps text-xs tracking-widest border border-[var(--hairline)] text-muted hover:text-foreground hover:border-accent px-4 py-3 text-left transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            <span className="p-2 rounded-lg bg-background border border-border text-muted group-hover:text-accent group-hover:border-accent/40 transition-colors flex-shrink-0">
-              {icons[q.tool] ?? <User className="w-4 h-4" />}
-            </span>
-            <span className="font-medium">{q.label}</span>
+            {q.label}
           </button>
         ))}
       </div>
