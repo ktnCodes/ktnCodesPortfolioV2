@@ -22,14 +22,14 @@
 
 /* Dark theme (default) */
 :root {
-  --background: #0A0A0A;
-  --foreground: #F5F5F5;
+  --background: #0a0a0a;
+  --foreground: #f5f5f5;
   --surface: #141414;
-  --accent: #22D3EE;
-  --accent-hover: #67E8F9;
-  --muted: #6B6B6B;
-  --border-color: #1F1F1F;
-  --hairline: #2A2A2A;
+  --accent: #22d3ee;
+  --accent-hover: #67e8f9;
+  --muted: #6b6b6b;
+  --border-color: #1f1f1f;
+  --hairline: #2a2a2a;
 }
 
 /* Light theme */
@@ -97,6 +97,10 @@ code {
   font-variant-caps: all-small-caps;
   letter-spacing: 0.14em;
   font-weight: 500;
+}
+
+.grain {
+  position: relative;
 }
 
 .grain::before {
