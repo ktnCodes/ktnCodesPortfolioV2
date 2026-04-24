@@ -47,7 +47,7 @@ function Card({
           </div>
         </div>
         {href ? (
-          <span className="small-caps text-[10px] text-accent">VIEW -&gt;</span>
+          <span className="small-caps text-[10px] text-accent">VIEW →</span>
         ) : (
           <span className="small-caps text-[10px] text-muted">INTERNAL</span>
         )}
@@ -107,7 +107,7 @@ export function WhatICanDo() {
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           {featured.map((p) => {
-            const href = p.links?.live ?? p.links?.github ?? undefined;
+            const href = p.links.live ?? p.links.github;
             const stat = deriveStat(p.title, p.techStack);
             return (
               <Card
