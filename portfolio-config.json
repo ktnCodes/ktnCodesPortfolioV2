@@ -76,13 +76,33 @@
   },
   "projects": [
     {
+      "title": "AutoPath Guidance",
+      "category": "Embedded / C++",
+      "description": "Day-job product. AutoPath is John Deere's GPS guidance system for tractors running on ruggedized embedded Linux hardware over CAN. I own feature development across Boundaries, Rows, Zones, and Pro product lines and validation through Jenkins CI plus Code Collaborator review, with HIL-style testing against target hardware.",
+      "techStack": ["C++14", "Qt5", "Embedded Linux", "CAN Protocol", "Jenkins", "Google Test", "HIL Testing"],
+      "date": "2024",
+      "status": "Ongoing (John Deere internal)",
+      "featured": true,
+      "links": {}
+    },
+    {
+      "title": "Team LLM Knowledge Base",
+      "category": "AI / Developer Tools",
+      "description": "Team-shared MkDocs knowledge base plus 6 custom Claude Code / GitHub Copilot skills and agentic workflows, adopted across the AutoPath team. Covers test generation, requirement extraction, test coverage analysis, test-to-requirement mapping, refactoring safety nets, and LLM architecture diagramming. Drove team Copilot usage from 0 to daily.",
+      "techStack": ["MkDocs", "Python", "Claude Code", "GitHub Copilot", "MCP", "Skill Authoring"],
+      "date": "2026",
+      "status": "Ongoing (John Deere internal)",
+      "featured": true,
+      "links": {}
+    },
+    {
       "title": "AI Portfolio Site (ktncodes.com)",
       "category": "Web / AI",
       "description": "Production Next.js 15 portfolio with an agentic chatbot using Vercel AI SDK. Implements tool-use chaining (up to 3 steps per turn) with tools for resume, projects, skills, contact, blog search, and on-demand MDX post content retrieval. Multi-model fallback (Gemini → OpenAI) with in-flight retry logic and server-side quota tracking.",
       "techStack": ["Next.js 15", "React", "TypeScript", "Tailwind CSS", "Vercel AI SDK", "OpenAI", "Google Gemini", "Vercel"],
       "date": "2026",
       "status": "Active",
-      "featured": true,
+      "featured": false,
       "links": {
         "github": "https://github.com/ktnCodes/ktncodes-v2",
         "live": "https://ktncodes.com"
@@ -95,7 +115,7 @@
       "techStack": ["Python", "SBERT", "FastMCP", "Claude Code", "BM25", "NetworkX"],
       "date": "2026",
       "status": "Active",
-      "featured": true,
+      "featured": false,
       "links": {
         "github": "https://github.com/ktnCodes/JobReforgerAI"
       }
@@ -119,7 +139,7 @@
       "techStack": ["C++17", "Qt 6", "QML", "CMake", "Ninja", "Google Test", "llama.cpp", "Claude API"],
       "date": "2026",
       "status": "Active",
-      "featured": true,
+      "featured": false,
       "links": {
         "github": "https://github.com/ktnCodes/arkive"
       }
@@ -131,6 +151,7 @@
       "techStack": ["Python", "FastMCP", "Claude Code"],
       "date": "2026",
       "status": "Active",
+      "featured": true,
       "links": {}
     },
     {
