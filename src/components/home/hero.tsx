@@ -1,7 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { StatCell } from "./stat-cell";
+import { RotatingTitle } from "./rotating-title";
+import { HeroBackdrop } from "./hero-backdrop";
 
 const stats = [
   {
@@ -29,31 +32,70 @@ const stats = [
 export function Hero() {
   return (
     <section className="relative min-h-[100vh] flex flex-col justify-between overflow-hidden grain">
-      <div className="flex-1 flex items-center">
-        <div className="mx-auto max-w-6xl w-full px-6 space-y-6">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="font-[family-name:var(--font-display)] text-5xl md:text-7xl lg:text-8xl font-light tracking-tight leading-[0.95]"
-          >
-            KEVIN TRINH NGUYEN
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
-            className="text-base md:text-lg text-muted max-w-2xl"
-          >
-            I build agentic workflows, and debug the systems they break.
-          </motion.p>
+      <HeroBackdrop />
+      <div className="relative z-10 flex-1 flex items-center">
+        <div className="mx-auto max-w-6xl w-full px-6 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-10 md:gap-14 items-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="relative w-40 h-40 md:w-52 md:h-52 flex-shrink-0 mx-auto md:mx-0"
+            >
+              <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-accent/40">
+                <Image
+                  src="/avatarwithWinnie.jpg"
+                  alt="Kevin Nguyen with Winnie"
+                  fill
+                  priority
+                  sizes="(min-width: 768px) 208px, 160px"
+                  className="object-cover object-top"
+                />
+              </div>
+              <div className="absolute bottom-2 right-2 w-5 h-5 rounded-full bg-accent border-2 border-background" />
+            </motion.div>
+            <div className="space-y-5 text-center md:text-left">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="small-caps text-[11px] tracking-[0.26em] text-muted"
+              >
+                HI, I&apos;M
+              </motion.div>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+                className="font-[family-name:var(--font-display)] text-4xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[0.95]"
+              >
+                KEVIN TRINH NGUYEN
+              </motion.h1>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="font-[family-name:var(--font-display)] text-2xl md:text-3xl lg:text-4xl font-light tracking-tight min-h-[1.4em]"
+              >
+                <RotatingTitle />
+              </motion.div>
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
+                className="text-base md:text-lg text-muted max-w-2xl mx-auto md:mx-0"
+              >
+                I build agentic workflows, and debug the systems they break.
+              </motion.p>
+            </div>
+          </div>
         </div>
       </div>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.9, delay: 0.2 }}
-        className="mx-auto max-w-6xl w-full px-6 pb-12 grid grid-cols-2 md:grid-cols-4 gap-6"
+        transition={{ duration: 0.9, delay: 0.4 }}
+        className="relative z-10 mx-auto max-w-6xl w-full px-6 pb-12 grid grid-cols-2 md:grid-cols-4 gap-6"
       >
         {stats.map((s) => (
           <StatCell key={s.label} {...s} />
