@@ -1,20 +1,16 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { Search } from "lucide-react";
 import { PostCard } from "@/components/posts/post-card";
+import { SectionEyebrow } from "@/components/home/section-eyebrow";
 import type { PostMeta } from "@/types/posts";
-
-// Search page needs post data passed from a server component wrapper,
-// but for simplicity we'll load it via an API-style approach.
-// For now, we use a client component with static data loaded at build.
 
 export default function SearchPage() {
   const [query, setQuery] = useState("");
   const [posts, setPosts] = useState<PostMeta[]>([]);
   const [allPosts, setAllPosts] = useState<PostMeta[] | null>(null);
 
-  // Fetch posts on first interaction
   const loadPosts = async () => {
     if (allPosts) return allPosts;
     const res = await fetch("/api/posts");
@@ -41,11 +37,16 @@ export default function SearchPage() {
   };
 
   return (
-    <div className="mx-auto max-w-4xl w-full px-4 sm:px-6 py-12 overflow-y-auto">
-      <h1 className="text-3xl font-bold mb-8">Search</h1>
+    <div className="mx-auto max-w-4xl w-full px-4 sm:px-6 py-16 overflow-y-auto">
+      <div className="mb-10 space-y-3">
+        <SectionEyebrow>SEARCH</SectionEyebrow>
+        <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-light tracking-tight">
+          Find a post.
+        </h1>
+      </div>
       <div className="relative mb-8">
         <Search
-          size={18}
+          size={16}
           className="absolute left-3 top-1/2 -translate-y-1/2 text-muted"
         />
         <input
@@ -53,12 +54,12 @@ export default function SearchPage() {
           placeholder="Search posts..."
           value={query}
           onChange={(e) => handleSearch(e.target.value)}
-          className="w-full pl-10 pr-4 py-3 rounded-lg bg-surface border border-border text-foreground placeholder:text-muted focus:outline-none focus:border-accent transition-colors"
+          className="w-full pl-10 pr-4 py-3 bg-[var(--surface)] border border-[var(--hairline)] text-foreground placeholder:text-muted focus:outline-none focus:border-accent transition-colors text-sm"
         />
       </div>
       {query && (
-        <p className="text-sm text-muted mb-6">
-          {posts.length} result{posts.length !== 1 ? "s" : ""} for &ldquo;{query}&rdquo;
+        <p className="small-caps text-[11px] text-muted mb-6">
+          {posts.length} RESULT{posts.length !== 1 ? "S" : ""} FOR &ldquo;{query}&rdquo;
         </p>
       )}
       <div className="space-y-4">

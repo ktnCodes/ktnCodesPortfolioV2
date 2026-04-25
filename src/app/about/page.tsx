@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { getConfig } from "@/lib/config";
+import { SectionEyebrow } from "@/components/home/section-eyebrow";
 import { formatSkillCategory } from "./utils";
 
 export const metadata: Metadata = {
@@ -14,62 +15,72 @@ export default function AboutPage() {
   const { personal, education, experience, skills, social } = config;
 
   return (
-    <div className="mx-auto max-w-4xl w-full px-4 sm:px-6 py-12 overflow-y-auto">
+    <div className="mx-auto max-w-4xl w-full px-4 sm:px-6 py-16 overflow-y-auto">
       {/* Header */}
-      <section className="mb-12">
-        <div className="flex items-start gap-5 mb-4">
-          <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-accent/30 flex-shrink-0">
+      <section className="mb-16 space-y-6">
+        <SectionEyebrow>ABOUT</SectionEyebrow>
+        <div className="flex items-start gap-6">
+          <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-2 border-accent/40 flex-shrink-0">
             <Image
               src="/avatarwithWinnie.jpg"
               alt="Kevin Nguyen"
               fill
+              sizes="(min-width: 768px) 112px, 96px"
               className="object-cover object-top"
               priority
             />
           </div>
-          <div>
-            <h1 className="text-3xl font-bold mb-1">{personal.name}</h1>
-            <p className="text-accent text-lg font-medium mb-1">{personal.title}</p>
-            <p className="text-muted text-sm">{personal.location}</p>
+          <div className="space-y-1 pt-1">
+            <h1 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-light tracking-tight leading-[1.05]">
+              {personal.name}
+            </h1>
+            <p className="text-accent text-sm md:text-base">{personal.title}</p>
+            <p className="small-caps text-[11px] text-muted">{personal.location}</p>
           </div>
         </div>
-        <p className="text-foreground/90 mt-4 leading-relaxed max-w-2xl">
+        <p className="text-sm md:text-base text-muted leading-relaxed max-w-2xl">
           {personal.bio}
         </p>
-        <div className="flex gap-4 mt-4">
+        <div className="flex flex-wrap gap-3">
           <a
             href={social.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-accent hover:text-accent-hover transition-colors text-sm"
+            className="small-caps text-[11px] text-foreground border border-[var(--hairline)] px-3 py-1.5 hover:border-accent hover:text-accent transition-colors"
           >
-            GitHub
+            GITHUB →
           </a>
           <a
             href={social.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-accent hover:text-accent-hover transition-colors text-sm"
+            className="small-caps text-[11px] text-foreground border border-[var(--hairline)] px-3 py-1.5 hover:border-accent hover:text-accent transition-colors"
           >
-            LinkedIn
+            LINKEDIN →
           </a>
           <a
             href="/resume.pdf"
-            className="text-accent hover:text-accent-hover transition-colors text-sm"
+            className="small-caps text-[11px] text-foreground border border-[var(--hairline)] px-3 py-1.5 hover:border-accent hover:text-accent transition-colors"
           >
-            Resume (PDF)
+            RESUME (PDF) →
           </a>
         </div>
       </section>
 
       {/* Experience */}
-      <section className="mb-12">
-        <h2 className="text-xl font-bold mb-6 text-accent">Experience</h2>
-        <div className="space-y-8">
+      <section className="mb-16 space-y-8 border-t border-[var(--hairline)] pt-12">
+        <SectionEyebrow>EXPERIENCE</SectionEyebrow>
+        <h2 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl font-light tracking-tight">
+          Where I&apos;ve built.
+        </h2>
+        <div className="space-y-10">
           {experience.map((exp, i) => (
-            <div key={i} className="relative pl-6 border-l-2 border-border">
-              <div className="absolute -left-[7px] top-1 w-3 h-3 rounded-full bg-accent" />
-              <h3 className="font-semibold text-lg">
+            <div
+              key={i}
+              className="relative pl-6 border-l border-[var(--hairline)]"
+            >
+              <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent" />
+              <h3 className="font-[family-name:var(--font-display)] text-xl font-light tracking-tight">
                 {exp.link && exp.linkLabel ? (() => {
                   const idx = exp.position.indexOf(exp.linkLabel!);
                   if (idx === -1) return exp.position;
@@ -80,7 +91,7 @@ export default function AboutPage() {
                         href={exp.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="underline underline-offset-2 hover:text-accent transition-colors"
+                        className="underline underline-offset-4 decoration-accent/60 hover:decoration-accent text-accent transition-colors"
                       >
                         {exp.linkLabel}
                       </a>
@@ -89,30 +100,33 @@ export default function AboutPage() {
                   );
                 })() : exp.position}
               </h3>
-              <p className="text-accent text-sm">
-                {exp.company} &middot; {exp.location}
-              </p>
-              <p className="text-muted text-sm mb-3">{exp.duration}</p>
+              <div className="flex items-center gap-2 small-caps text-[11px] text-muted mt-2">
+                <span className="text-foreground">{exp.company}</span>
+                <span className="h-px w-4 bg-[var(--hairline)]" />
+                <span>{exp.location}</span>
+                <span className="h-px w-4 bg-[var(--hairline)]" />
+                <span>{exp.duration}</span>
+              </div>
               {exp.highlights && exp.highlights.length > 0 && (
-                <div className="flex flex-wrap gap-1.5 mb-3">
+                <div className="flex flex-wrap gap-2 mt-4">
                   {exp.highlights.map((h) => (
                     <span
                       key={h}
-                      className="px-2.5 py-0.5 text-xs rounded-full bg-accent/10 border border-accent/20 text-accent font-medium"
+                      className="small-caps text-[10px] text-accent border border-accent/40 px-2 py-1"
                     >
                       {h}
                     </span>
                   ))}
                 </div>
               )}
-              <p className="text-foreground/80 text-sm leading-relaxed">
+              <p className="text-sm text-muted leading-relaxed mt-4">
                 {exp.description}
               </p>
-              <div className="flex flex-wrap gap-1.5 mt-3">
+              <div className="flex flex-wrap gap-2 mt-4">
                 {exp.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="px-2 py-0.5 text-xs rounded bg-surface border border-border text-muted"
+                    className="small-caps text-[10px] text-muted border border-[var(--hairline)] px-2 py-1"
                   >
                     {tech}
                   </span>
@@ -124,19 +138,22 @@ export default function AboutPage() {
       </section>
 
       {/* Skills */}
-      <section className="mb-12">
-        <h2 className="text-xl font-bold mb-6 text-accent">Skills</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <section className="mb-16 space-y-8 border-t border-[var(--hairline)] pt-12">
+        <SectionEyebrow>SKILLS</SectionEyebrow>
+        <h2 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl font-light tracking-tight">
+          The toolkit I build with.
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-8">
           {Object.entries(skills).map(([category, items]) => (
-            <div key={category}>
-              <h3 className="font-medium text-sm text-muted mb-2">
+            <div key={category} className="space-y-3">
+              <div className="small-caps text-[11px] text-foreground">
                 {formatSkillCategory(category)}
-              </h3>
-              <div className="flex flex-wrap gap-1.5">
+              </div>
+              <div className="flex flex-wrap gap-2">
                 {items.map((skill) => (
                   <span
                     key={skill}
-                    className="px-2 py-0.5 text-xs rounded bg-surface border border-border text-foreground/80"
+                    className="small-caps text-[10px] text-foreground border border-[var(--hairline)] px-2 py-1 hover:border-accent hover:text-accent transition-colors"
                   >
                     {skill}
                   </span>
@@ -148,17 +165,23 @@ export default function AboutPage() {
       </section>
 
       {/* Education */}
-      <section className="mb-12">
-        <h2 className="text-xl font-bold mb-6 text-accent">Education</h2>
-        <div>
-          <h3 className="font-semibold">{education.degree}</h3>
-          <p className="text-accent text-sm">{education.institution}</p>
-          <p className="text-muted text-sm">{education.graduationDate}</p>
+      <section className="mb-16 space-y-6 border-t border-[var(--hairline)] pt-12">
+        <SectionEyebrow>EDUCATION</SectionEyebrow>
+        <div className="space-y-2">
+          <h3 className="font-[family-name:var(--font-display)] text-xl font-light tracking-tight">
+            {education.degree}
+          </h3>
+          <div className="flex items-center gap-2 small-caps text-[11px] text-muted">
+            <span className="text-foreground">{education.institution}</span>
+            <span className="h-px w-4 bg-[var(--hairline)]" />
+            <span>{education.graduationDate}</span>
+          </div>
           {education.highlights.length > 0 && (
-            <ul className="mt-2 space-y-1">
+            <ul className="mt-4 space-y-1.5">
               {education.highlights.map((h) => (
-                <li key={h} className="text-sm text-foreground/80">
-                  {h}
+                <li key={h} className="text-sm text-muted flex items-baseline gap-3">
+                  <span className="text-accent text-[10px]">▸</span>
+                  <span>{h}</span>
                 </li>
               ))}
             </ul>
@@ -167,14 +190,24 @@ export default function AboutPage() {
       </section>
 
       {/* What You'll Find Here */}
-      <section>
-        <h2 className="text-xl font-bold mb-4 text-accent">
-          What You&apos;ll Find Here
+      <section className="space-y-6 border-t border-[var(--hairline)] pt-12">
+        <SectionEyebrow>THE SITE</SectionEyebrow>
+        <h2 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl font-light tracking-tight">
+          What you&apos;ll find here.
         </h2>
-        <ul className="space-y-2 text-foreground/80">
-          <li>Notes on agentic engineering and AI-assisted development</li>
-          <li>Technical deep dives and project write-ups</li>
-          <li>Learning logs and knowledge collected along the way</li>
+        <ul className="space-y-2 text-sm text-muted">
+          <li className="flex items-baseline gap-3">
+            <span className="text-accent text-[10px]">▸</span>
+            <span>Notes on agentic engineering and AI-assisted development</span>
+          </li>
+          <li className="flex items-baseline gap-3">
+            <span className="text-accent text-[10px]">▸</span>
+            <span>Technical deep dives and project write-ups</span>
+          </li>
+          <li className="flex items-baseline gap-3">
+            <span className="text-accent text-[10px]">▸</span>
+            <span>Learning logs and knowledge collected along the way</span>
+          </li>
         </ul>
       </section>
     </div>

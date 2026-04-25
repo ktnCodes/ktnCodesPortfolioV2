@@ -76,6 +76,9 @@ function deriveStat(title: string, techStack: string[]) {
   if (title === "Team LLM Knowledge Base") {
     return { statValue: "0 -> DAILY", statLabel: "COPILOT ADOPTION" };
   }
+  if (title === "LLM-Powered Wiki Template") {
+    return { statValue: "6", statLabel: "PIPELINE SKILLS" };
+  }
   if (title === "YouTube Research Report Tool") {
     return { statValue: "FastMCP", statLabel: "MCP TOOL SERVER" };
   }

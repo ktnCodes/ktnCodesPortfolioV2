@@ -2,7 +2,11 @@
 
 function polarToCartesian(cx: number, cy: number, r: number, angleDeg: number) {
   const rad = ((angleDeg - 90) * Math.PI) / 180;
-  return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+  // Round to 2 decimals so server- and client-rendered SVG strings match
+  // (avoids React 19 hydration warnings from float repr drift).
+  const x = Math.round((cx + r * Math.cos(rad)) * 100) / 100;
+  const y = Math.round((cy + r * Math.sin(rad)) * 100) / 100;
+  return { x, y };
 }
 
 function arcPath(

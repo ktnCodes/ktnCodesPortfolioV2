@@ -96,6 +96,16 @@
       "links": {}
     },
     {
+      "title": "LLM-Powered Wiki Template",
+      "category": "AI / Developer Tools",
+      "description": "Internal hackathon project. Forkable team wiki template built on Karpathy's 3-layer architecture (raw -> compiled -> operating instructions), LLM-maintained through agent skills. Ships with 6 pipeline skills for setup, ingest, query, lint, deploy, and repo self-mapping. ICM provides self-documenting context so any LLM can orient instantly in a fresh fork.",
+      "techStack": ["MkDocs Material", "Python", "GitHub Actions", "Claude Code", "GitHub Copilot", "ICM"],
+      "date": "2026",
+      "status": "Internal (John Deere hackathon)",
+      "featured": true,
+      "links": {}
+    },
+    {
       "title": "AI Portfolio Site (ktncodes.com)",
       "category": "Web / AI",
       "description": "Production Next.js 15 portfolio with an agentic chatbot using Vercel AI SDK. Implements tool-use chaining (up to 3 steps per turn) with tools for resume, projects, skills, contact, blog search, and on-demand MDX post content retrieval. Multi-model fallback (Gemini → OpenAI) with in-flight retry logic and server-side quota tracking.",

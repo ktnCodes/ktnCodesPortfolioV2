@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getAllTags, getPostsByTag } from "@/lib/posts";
 import { PostCard } from "@/components/posts/post-card";
+import { SectionEyebrow } from "@/components/home/section-eyebrow";
 
 export async function generateStaticParams() {
   return getAllTags().map(({ tag }) => ({ tag }));
@@ -29,13 +30,17 @@ export default async function TagPage({
   const posts = getPostsByTag(decoded);
 
   return (
-    <div className="mx-auto max-w-4xl w-full px-4 sm:px-6 py-12 overflow-y-auto">
-      <h1 className="text-3xl font-bold mb-2">
-        <span className="text-accent">#</span>{decoded}
-      </h1>
-      <p className="text-muted mb-8">
-        {posts.length} post{posts.length !== 1 ? "s" : ""}
-      </p>
+    <div className="mx-auto max-w-4xl w-full px-4 sm:px-6 py-16 overflow-y-auto">
+      <div className="mb-10 space-y-3">
+        <SectionEyebrow>TAG</SectionEyebrow>
+        <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-light tracking-tight">
+          <span className="text-accent">#</span>
+          {decoded}
+        </h1>
+        <p className="small-caps text-[11px] text-muted">
+          {posts.length} POST{posts.length !== 1 ? "S" : ""}
+        </p>
+      </div>
       <div className="space-y-4">
         {posts.map((post) => (
           <PostCard key={post.slug} post={post} />

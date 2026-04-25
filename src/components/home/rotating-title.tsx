@@ -33,13 +33,18 @@ export function RotatingTitle() {
       const t = setTimeout(() => setText(full.slice(0, text.length - 1)), DELETE_MS);
       return () => clearTimeout(t);
     }
-    setIdx((i) => (i + 1) % TITLES.length);
-    setPhase("typing");
+    // Defer the rotation transition so the setState is in an async callback
+    // (avoids react-hooks/set-state-in-effect; behavior is identical).
+    const t = setTimeout(() => {
+      setIdx((i) => (i + 1) % TITLES.length);
+      setPhase("typing");
+    }, 0);
+    return () => clearTimeout(t);
   }, [text, phase, idx]);
 
   return (
     <span className="inline-flex items-baseline">
-      <span className="text-accent">{text}</span>
+      <span className="text-foreground">{text}</span>
       <span
         aria-hidden
         className="ml-[2px] inline-block w-[3px] h-[0.85em] bg-accent animate-caret-blink translate-y-[3px]"

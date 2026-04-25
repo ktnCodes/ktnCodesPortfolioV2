@@ -59,33 +59,29 @@ export function Hero() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="small-caps text-[11px] tracking-[0.26em] text-muted"
+                className="small-caps text-sm md:text-base tracking-[0.22em] text-muted"
               >
-                HI, I&apos;M
+                HI, I&apos;M{" "}
+                <span className="text-foreground">KEVIN TRINH NGUYEN</span> —
               </motion.div>
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: "easeOut" }}
-                className="font-[family-name:var(--font-display)] text-4xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[0.95]"
-              >
-                KEVIN TRINH NGUYEN
-              </motion.h1>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="font-[family-name:var(--font-display)] text-2xl md:text-3xl lg:text-4xl font-light tracking-tight min-h-[1.4em]"
+                className="font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[0.95] min-h-[1.15em]"
               >
                 <RotatingTitle />
-              </motion.div>
+              </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
                 className="text-base md:text-lg text-muted max-w-2xl mx-auto md:mx-0"
               >
-                I build agentic workflows, and debug the systems they break.
+                Building AI-augmented systems with{" "}
+                <span className="text-foreground">ICM</span> +{" "}
+                <span className="text-foreground">MCP</span> +{" "}
+                <span className="text-foreground">RAG</span>.
               </motion.p>
             </div>
           </div>

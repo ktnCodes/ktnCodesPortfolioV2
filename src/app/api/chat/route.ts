@@ -12,7 +12,7 @@ import { getAllPostMeta, getPostBySlug } from "@/lib/posts";
 // On Vercel (stateless), set DISABLE_GOOGLE=true in env vars to skip Google entirely.
 let googleExhausted = false;
 
-function useGoogle(): boolean {
+function shouldUseGoogle(): boolean {
   if (process.env.DISABLE_GOOGLE === "true") return false;
   if (googleExhausted) return false;
   return !!process.env.GOOGLE_GENERATIVE_AI_API_KEY;
@@ -135,7 +135,7 @@ export async function POST(req: Request) {
 
     // Try Google first; if it throws synchronously (quota at connection level),
     // fall through and retry with OpenAI on the same request.
-    if (useGoogle()) {
+    if (shouldUseGoogle()) {
       try {
         const result = streamText({
           model: google("gemini-2.5-flash-lite"),

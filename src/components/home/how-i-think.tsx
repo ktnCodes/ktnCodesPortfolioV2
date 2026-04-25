@@ -47,7 +47,7 @@ export function HowIThink() {
         <div className="max-w-xl space-y-4">
           <SectionEyebrow number="01">HOW I THINK</SectionEyebrow>
           <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-5xl font-light tracking-tight">
-            Pattern matcher first. Evidence-backed always.
+            Built the system. Onboarded the team.
           </h2>
         </div>
         {rows.map((r) => (

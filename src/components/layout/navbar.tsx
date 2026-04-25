@@ -17,7 +17,6 @@ const navLinks = [
 export function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const isHome = pathname === "/";
 
   function handleLogoClick(e: React.MouseEvent) {
     if (pathname === "/") {
@@ -53,11 +52,11 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
-            {!isHome && <ThemeToggle />}
+            <ThemeToggle />
           </div>
 
           <div className="flex items-center gap-2 md:hidden">
-            {!isHome && <ThemeToggle />}
+            <ThemeToggle />
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="p-2 text-muted hover:text-foreground transition-colors"
