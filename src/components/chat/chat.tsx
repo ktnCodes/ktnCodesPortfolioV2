@@ -1,13 +1,13 @@
 "use client";
 
-import { useChat } from "@ai-sdk/react";
 import { useState, useEffect, useRef, type FormEvent } from "react";
 import { ChatLanding } from "./chat-landing";
 import { ChatMessage } from "./chat-message";
 import { ChatInput } from "./chat-input";
+import { useChatContext } from "./chat-context";
 
 export function Chat() {
-  const { messages, sendMessage, status, stop, error } = useChat();
+  const { messages, sendMessage, status, stop, error } = useChatContext();
 
   const [input, setInput] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
